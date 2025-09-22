@@ -48,8 +48,8 @@
     </tr>
     <tr>
       <td>5</td>
-      <td>CVP3Naa CVP3Nas CVP4Naa CVP4Nas</td>
-      <td>IR1101/1800 Dual LTE with active/active &amp; active/standby</td>
+      <td>CVP3NAA CVP3NAS</td>
+      <td>IR1101 Dual LTE with active/active &amp; active/standby</td>
       <td>20.15.2+ <br>
           &amp; IOS 17.18.1/17.15.4
       </td>
@@ -57,34 +57,43 @@
     </tr>
     <tr>
       <td>6</td>
-      <td>CVP1NX CVP2Nx</td>
+      <td>CVP4NAA CVP4NAS</td>
+      <td>IR1800 Dual LTE with active/active &amp; active/standby</td>
+      <td>20.15.2+ <br>
+          &amp; IOS 17.18.1/17.15.4
+      </td>
+      <td>Single router SD-WAN configurations with wired and dual LTE in both active/active and active/standby modes, supporting single service VPN for for horizontal IR deployments.</td>
+    </tr>    
+    <tr>
+      <td>7</td>
+      <td>CVP1NX CVP2NX</td>
       <td>IR1101/IR1800</td>
       <td>20.15.2+</td>
       <td>Single router SD-WAN configurations with LTE and wired as last resort supporting single service VPN for for horizontal IR deployments. Reverse priority of CVP1N and CVP2N</td>
     </tr>
     <tr>
-      <td>7</td>
+      <td>8</td>
       <td>CVP5_CV CVP6_CV</td>
       <td>IR1101/IR1835 Roadways with CV</td>
       <td>20.18.1</td>
       <td>Single router SD-WAN configurations with wired and single LTE as last resort supporting multiple service VPN for Roadways deployments with ISE integration and lan port authentication. Also includes profile to deploy Cyber Vision sensor in IOX</td>
     </tr>
     <tr>
-      <td>8</td>
+      <td>9</td>
       <td>CVP1N_SEA CVP2N_SEA</td>
       <td>IR1101/IR1800 in NAT mode with SEA</td>
       <td>20.18.1</td>
       <td>Same as CVP1N/CVP2N with Cisco Secure Equipment Access agent deployment included.</td>
     </tr>
     <tr>
-      <td>9</td>
+      <td>10</td>
       <td>CVP1N_TE CVP2N_TE</td>
       <td>IR1101/IR1800 in NAT mode with ThousandEyes</td>
       <td>20.18.2</td>
       <td>Same as CVP1N/CVP2N with ThousandEyes agent deployment included.</td>
     </tr>
     <tr>
-      <td>10</td>
+      <td>11</td>
       <td>CVP6_CVSEA CVP6_CVTE</td>
       <td>IR1835 Roadways (CV/SEA) Roadways (CV/TE)</td>
       <td>20.18.2</td>
