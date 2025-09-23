@@ -20,7 +20,7 @@
   <tbody>
     <tr>
       <td>1</td>
-      <td>[CVP1N/R](./IR1101/CVP1N)!</td>
+      <td><a href="./IR1101/CVP1N">CVP1N</a></td>
       <td>IR1101</td>
       <td>20.15.2+</td>
       <td>Single router SD-WAN configurations with wired and single LTE as last resort supporting single service VPN for for horizontal IR1101 deployments.</td>
