@@ -67,7 +67,7 @@
     </tr>    
     <tr>
       <td>7</td>
-      <td>CVP?R</td>
+      <td>CVP7R</td>
       <td>IR8340</td>
       <td>Coming Soon</td>
       <td></td>
