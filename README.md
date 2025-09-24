@@ -96,7 +96,7 @@
     <tr>
       <td>11</td>
       <td>CVP6_CVSEA CVP6_CVTE</td>
-      <td> IR1835 <p> Roadways (CV&SEA)</p> Roadways (CV&TE)</td>
+      <td width="18%">IR1835 <p> Roadways (CV&SEA)</p> Roadways (CV&TE)</td>
       <td>Coming Soon</td>
       <td>IR1835 Roadways catalog with combined applications, Cyber Vision & Secure Equipment Access or Cyber Vision & ThousandEyes.</td>
     </tr>
