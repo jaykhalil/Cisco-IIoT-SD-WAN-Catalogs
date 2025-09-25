@@ -92,13 +92,20 @@
     </tr>
     <tr>
       <td>10</td>
+      <td>CVP1N_TESEA CVP2N_TESEA</td>
+      <td>IR1101 & IR1800 <p> NAT with ThousandEyes and SEA</p></td>
+      <td>Coming Soon</td>
+      <td>Same as CVP1N/CVP2N with ThousandEyes and Secure Equipment agents deployment included.</td>
+    </tr>
+    <tr>
+      <td>11</td>
       <td>CVP5_CV CVP6_CV</td>
       <td>IR1101 & IR1835 Roadways (CV)</td>
       <td>Coming Soon</td>
       <td>Single router SD-WAN configurations with wired and single LTE as last resort supporting multiple service VPN for Roadways deployments with ISE integration and lan port authentication. Also includes profile to deploy Cyber Vision sensor in IOX</td>
     </tr>
     <tr>
-      <td>11</td>
+      <td>12</td>
       <td>CVP6_CVSEA CVP6_CVTE</td>
       <td width="18%">IR1835 <p> Roadways (CV&SEA)</p> Roadways (CV&TE)</td>
       <td>Coming Soon</td>
