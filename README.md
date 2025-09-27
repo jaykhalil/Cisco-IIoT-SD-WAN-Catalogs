@@ -71,49 +71,48 @@
     </tr>    
     <tr>
       <td>7</td>
-      <td>CVP7R</td>
-      <td>IR8340</td>
-      <td>Coming Soon</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>8</td>
       <td><a href="./IR1101/CVP1N_apps">CVP1N_SEA</a> <a href="./IR18xx/CVP2N_apps">CVP2N_SEA</a></td>
       <td>IR1101 & IR1800 <p> NAT with SEA</p></td>
-      <td>Coming Soon</td>
+      <td>20.18.1+</td>
       <td>Same as CVP1N/CVP2N with Cisco Secure Equipment Access agent deployment included.</td>
     </tr>
     <tr>
-      <td>9</td>
+      <td>8</td>
       <td><a href="./IR1101/CVP1N_apps">CVP1N_TE</a> <a href="./IR18xx/CVP2N_apps">CVP2N_TE</a></td>
       <td>IR1101 & IR1800 <p> NAT with ThousandEyes</p></td>
       <td>Coming Soon</td>
       <td>Same as CVP1N/CVP2N with ThousandEyes agent deployment included.</td>
     </tr>
     <tr>
-      <td>10</td>
+      <td>9</td>
       <td><a href="./IR1101/CVP1N_apps">CVP1N_TESEA</a> <a href="./IR18xx/CVP2N_apps">CVP2N_TESEA</a></td>
       <td>IR1101 & IR1800 <p> NAT with ThousandEyes and SEA</p></td>
       <td>Coming Soon</td>
       <td>Same as CVP1N/CVP2N with ThousandEyes and Secure Equipment agents deployment included.</td>
     </tr>
     <tr>
-      <td>11</td>
+      <td>10</td>
       <td>CVP5_CV CVP6_CV</td>
       <td>IR1101 & IR1835 Roadways (CV)</td>
       <td>Coming Soon</td>
       <td>Single router SD-WAN configurations with wired and single LTE as last resort supporting multiple service VPN for Roadways deployments with ISE integration and lan port authentication. Also includes profile to deploy Cyber Vision sensor in IOX</td>
     </tr>
     <tr>
-      <td>12</td>
+      <td>11</td>
       <td>CVP6_CVSEA CVP6_CVTE</td>
       <td width="18%">IR1835 <p> Roadways (CV&SEA)</p> Roadways (CV&TE)</td>
       <td>Coming Soon</td>
       <td>IR1835 Roadways catalog with combined applications, Cyber Vision & Secure Equipment Access or Cyber Vision & ThousandEyes.</td>
     </tr>
+    <tr>
+      <td>12</td>
+      <td>CVP7R</td>
+      <td>IR8340</td>
+      <td>Coming Soon</td>
+      <td></td>
+    </tr>
   </tbody>
 </table>
-
 </body>
 </html>
 <p> Cisco provides the configurations in this catalogs as is for your convenience. These configurations have been built using industry best practices, observed across multiple deployments, which may be beneficial to you. Cisco is not responsible for any technical issues, bugs, or other issues that may arise from your use of these configurations and any resulting indirect, incidental, reliance, consequential, special or exemplary damages or loss of actual or anticipated revenue, profit, business, savings, data goodwill or use, business interruption, damaged data, wasted expenditure or delay in delivery (in all cases, whether direct or indirect). </p>
