@@ -78,21 +78,21 @@
     </tr>
     <tr>
       <td>8</td>
-      <td><a href="./IR1101/CVP1N_apps">CVP1N_apps</a> <a href="./IR1101/CVP1N_apps">CVP1N_apps</a></td>
+      <td><a href="./IR1101/CVP1N_apps">CVP1N_SEA</a> <a href="./IR18xx/CVP2N_apps">CVP2N_SEA</a></td>
       <td>IR1101 & IR1800 <p> NAT with SEA</p></td>
       <td>Coming Soon</td>
       <td>Same as CVP1N/CVP2N with Cisco Secure Equipment Access agent deployment included.</td>
     </tr>
     <tr>
       <td>9</td>
-      <td>CVP1N_TE CVP2N_TE</td>
+      <td><a href="./IR1101/CVP1N_apps">CVP1N_TE</a> <a href="./IR18xx/CVP2N_apps">CVP2N_TE</a></td>
       <td>IR1101 & IR1800 <p> NAT with ThousandEyes</p></td>
       <td>Coming Soon</td>
       <td>Same as CVP1N/CVP2N with ThousandEyes agent deployment included.</td>
     </tr>
     <tr>
       <td>10</td>
-      <td>CVP1N_TESEA CVP2N_TESEA</td>
+      <td><a href="./IR1101/CVP1N_apps">CVP1N_TESEA</a> <a href="./IR18xx/CVP2N_apps">CVP2N_TESEA</a></td>
       <td>IR1101 & IR1800 <p> NAT with ThousandEyes and SEA</p></td>
       <td>Coming Soon</td>
       <td>Same as CVP1N/CVP2N with ThousandEyes and Secure Equipment agents deployment included.</td>
