@@ -78,7 +78,7 @@
     </tr>
     <tr>
       <td>8</td>
-      <td>CVP1N_SEA CVP2N_SEA</td>
+      <td><a href="./IR1101/CVP1N_apps">CVP1N_apps</a> <a href="./IR1101/CVP1N_apps">CVP1N_apps</a></td>
       <td>IR1101 & IR1800 <p> NAT with SEA</p></td>
       <td>Coming Soon</td>
       <td>Same as CVP1N/CVP2N with Cisco Secure Equipment Access agent deployment included.</td>
