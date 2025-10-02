@@ -19,6 +19,7 @@
       <th width="16%">Cisco Validated Profile (CVP)</th>
       <th width="18%">Cisco IIoT Platforms</th>
       <th width="20%">Catalyst SD-WAN Release</th>
+      <th width="10%">Applications Profiles</th>
       <th>Functional Description</th>
     </tr>
   </thead>
@@ -28,6 +29,7 @@
       <td><a href="./IR1101/CVP1N">CVP1N</a> <a href="./IR1101/CVP1R">CVP1R</a></td>
       <td>IR1101</td>
       <td>20.15.2+</td>
+      <td>NA</td>
       <td>Single router SD-WAN configurations with wired and single LTE as last resort supporting single service VPN for for horizontal IR1101 deployments.</td>
     </tr>
     <tr>
@@ -35,6 +37,7 @@
       <td><a href="./IR18xx/CVP2N">CVP2N</a> <a href="./IR18xx/CVP2R">CVP2R</a></td>
       <td>IR1800</td>
       <td>20.15.2+</td>
+      <td>NA</td>
       <td>Single router SD-WAN configurations with wired and single LTE as last resort supporting single service VPN for for horizontal IR1800 deployments.</td>
     </tr>
     <tr>
@@ -42,6 +45,7 @@
       <td><a href="./IR1101/CVP1NX">CVP1NX</a> <a href="./IR18xx/CVP2NX">CVP2NX</a></td>          
       <td>IR1101 & IR1800</td>
       <td>20.15.2+</td>
+      <td>NA</td>
       <td>Single router SD-WAN configurations with LTE and wired as last resort supporting single service VPN for for horizontal IR deployments. Reverse priority of CVP1N and CVP2N</td>
     </tr>   
     <tr>
@@ -49,6 +53,7 @@
       <td><a href="./Roadways/CVP5">CVP5</a> <a href="./Roadways/CVP6">CVP6</a></td>
       <td>IR1101 & IR1835 Roadways</td>
       <td>20.15.2+</td>
+      <td>NA</td>
       <td>Single router SD-WAN configurations with wired and single LTE as last resort supporting multiple service VPN for Roadways deployments with ISE integration and lan port authentication</td>
     </tr>
     <tr>
@@ -58,6 +63,7 @@
       <td>20.15.2+ <br>
           &amp; IOS 17.18.1/17.15.4
       </td>
+      <td>NA</td>
       <td>Single router SD-WAN configurations with wired and dual LTE in both active/active and active/standby modes, supporting single service VPN for for horizontal IR deployments.</td>
     </tr>
     <tr>
@@ -67,27 +73,31 @@
       <td>20.15.2+ <br>
           &amp; IOS 17.18.1/17.15.4
       </td>
+      <td>NA</td>
       <td>Single router SD-WAN configurations with wired and dual LTE in both active/active and active/standby modes, supporting single service VPN for for horizontal IR deployments.</td>
     </tr>    
     <tr>
       <td>7</td>
       <td><a href="./IR1101/CVP1N_apps">CVP1N_SEA</a> <a href="./IR18xx/CVP2N_apps">CVP2N_SEA</a></td>
-      <td>IR1101 & IR1800 <p> NAT with SEA</p></td>
+      <td>IR1101 & IR1800</td>
       <td>20.18.1+</td>
+      <td>SEA</td>
       <td>Same as CVP1N/CVP2N with Cisco Secure Equipment Access agent deployment included.</td>
     </tr>
     <tr>
       <td>8</td>
       <td><a href="./IR1101/CVP1N_apps">CVP1N_TE</a> <a href="./IR18xx/CVP2N_apps">CVP2N_TE</a></td>
-      <td>IR1101 & IR1800 <p> NAT with ThousandEyes</p></td>
+      <td>IR1101 & IR1800</td>
       <td>Coming Soon</td>
+      <td>ThousandEyes</td>
       <td>Same as CVP1N/CVP2N with ThousandEyes agent deployment included.</td>
     </tr>
     <tr>
       <td>9</td>
       <td><a href="./IR1101/CVP1N_apps">CVP1N_TESEA</a> <a href="./IR18xx/CVP2N_apps">CVP2N_TESEA</a></td>
-      <td>IR1101 & IR1800 <p> NAT with ThousandEyes and SEA</p></td>
+      <td>IR1101 & IR1800</td>
       <td>Coming Soon</td>
+      <td>ThousandEyes & SEA</td>
       <td>Same as CVP1N/CVP2N with ThousandEyes and Secure Equipment agents deployment included.</td>
     </tr>
     <tr>
@@ -95,6 +105,7 @@
       <td>CVP5_CV CVP6_CV</td>
       <td>IR1101 & IR1835 Roadways (CV)</td>
       <td>Coming Soon</td>
+      <td>Cyber Vision</td>
       <td>Single router SD-WAN configurations with wired and single LTE as last resort supporting multiple service VPN for Roadways deployments with ISE integration and lan port authentication. Also includes profile to deploy Cyber Vision sensor in IOX</td>
     </tr>
     <tr>
@@ -102,6 +113,7 @@
       <td>CVP6_CVSEA CVP6_CVTE</td>
       <td width="18%">IR1835 <p> Roadways (CV&SEA)</p> Roadways (CV&TE)</td>
       <td>Coming Soon</td>
+      <td>Cyber Vision & SEA</td>
       <td>IR1835 Roadways catalog with combined applications, Cyber Vision & Secure Equipment Access or Cyber Vision & ThousandEyes.</td>
     </tr>
     <tr>
@@ -109,6 +121,7 @@
       <td>CVP7R</td>
       <td>IR8340</td>
       <td>Coming Soon</td>
+      <td>NA</td>
       <td></td>
     </tr>
   </tbody>
