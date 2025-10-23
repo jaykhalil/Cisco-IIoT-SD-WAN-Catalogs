@@ -80,7 +80,7 @@
       <td>7</td>
       <td><a href="./IR1101/CVP1N_apps">CVP1N_SEA</a> <a href="./IR18xx/CVP2N_apps">CVP2N_SEA</a></td>
       <td>IR1101 & IR1800</td>
-      <td>Coming Soon</td>
+      <td>20.18.1+</td>
       <td>SEA</td>
       <td>Same as CVP1N/CVP2N with Cisco Secure Equipment Access agent deployment included.</td>
     </tr>
