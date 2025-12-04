@@ -88,7 +88,7 @@
       <td>8</td>
       <td><a href="./IR1101/CVP1N_apps">CVP1N_TE</a> <a href="./IR18xx/CVP2N_apps">CVP2N_TE</a></td>
       <td>IR1101 & IR1800</td>
-      <td>Coming Soon</td>
+      <td>20.18.2+</td>
       <td>ThousandEyes</td>
       <td>Same as CVP1N/CVP2N with ThousandEyes agent deployment included.</td>
     </tr>
@@ -96,7 +96,7 @@
       <td>9</td>
       <td><a href="./IR1101/CVP1N_apps">CVP1N_TESEA</a> <a href="./IR18xx/CVP2N_apps">CVP2N_TESEA</a></td>
       <td>IR1101 & IR1800</td>
-      <td>Coming Soon</td>
+      <td>20.18.2+</td>
       <td>ThousandEyes & SEA</td>
       <td>Same as CVP1N/CVP2N with ThousandEyes and Secure Equipment agents deployment included.</td>
     </tr>
@@ -123,6 +123,14 @@
       <td>Coming Soon</td>
       <td>NA</td>
       <td></td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>CVP_UTD</td>
+      <td>IR1835</td>
+      <td>20.18.2+</td>
+      <td>UTD</td>
+      <td>IR1835 Roadways Sample Policy Group export that enables installation of UTD and creates sample NGFW activating UTD features.</td>
     </tr>
   </tbody>
 </table>
