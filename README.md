@@ -102,6 +102,14 @@
     </tr>
     <tr>
       <td>10</td>
+      <td><a href="./IR18xx/CVP_apps/CVP_UTD">CVP_UTD</a></td>
+      <td>IR1835</td>
+      <td>20.18.2+</td>
+      <td>UTD</td>
+      <td>IR1835 Roadways Sample Policy Group export that enables installation of UTD and creates sample NGFW activating UTD features.</td>
+    </tr>
+    <tr>
+      <td>11</td>
       <td>CVP5_CV CVP6_CV</td>
       <td>IR1101 & IR1835 Roadways (CV)</td>
       <td>Coming Soon</td>
@@ -109,7 +117,7 @@
       <td>Single router SD-WAN configurations with wired and single LTE as last resort supporting multiple service VPN for Roadways deployments with ISE integration and lan port authentication. Also includes profile to deploy Cyber Vision sensor in IOX</td>
     </tr>
     <tr>
-      <td>11</td>
+      <td>12</td>
       <td>CVP6_CVSEA CVP6_CVTE</td>
       <td width="18%">IR1835 <p> Roadways (CV&SEA)</p> Roadways (CV&TE)</td>
       <td>Coming Soon</td>
@@ -117,20 +125,12 @@
       <td>IR1835 Roadways catalog with combined applications, Cyber Vision & Secure Equipment Access or Cyber Vision & ThousandEyes.</td>
     </tr>
     <tr>
-      <td>12</td>
+      <td>13</td>
       <td>CVP7R</td>
       <td>IR8340</td>
       <td>Coming Soon</td>
       <td>NA</td>
       <td></td>
-    </tr>
-    <tr>
-      <td>13</td>
-      <td><a href="./IR18xx/CVP_apps/CVP_UTD">CVP_UTD</a></td>
-      <td>IR1835</td>
-      <td>20.18.2+</td>
-      <td>UTD</td>
-      <td>IR1835 Roadways Sample Policy Group export that enables installation of UTD and creates sample NGFW activating UTD features.</td>
     </tr>
   </tbody>
 </table>
