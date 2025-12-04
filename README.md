@@ -78,7 +78,7 @@
     </tr>    
     <tr>
       <td>7</td>
-      <td><a href="./IR1101/CVP1N_apps">CVP1N_SEA</a> <a href="./IR18xx/CVP2N_apps">CVP2N_SEA</a></td>
+      <td><a href="./IR1101/CVP_apps/CVP1N_SEA">CVP1N_SEA</a> <a href="./IR18xx/CVP_apps/CVP2N_SEA">CVP2N_SEA</a></td>
       <td>IR1101 & IR1800</td>
       <td>20.18.1+</td>
       <td>SEA</td>
@@ -86,7 +86,7 @@
     </tr>
     <tr>
       <td>8</td>
-      <td><a href="./IR1101/CVP1N_apps">CVP1N_TE</a> <a href="./IR18xx/CVP2N_apps">CVP2N_TE</a></td>
+      <td><a href="./IR1101/CVP_apps/CVP1N_TE">CVP1N_TE</a> <a href="./IR18xx/CVP_apps/CVP2N_TE">CVP2N_TE</a></td>
       <td>IR1101 & IR1800</td>
       <td>20.18.2+</td>
       <td>ThousandEyes</td>
@@ -94,7 +94,7 @@
     </tr>
     <tr>
       <td>9</td>
-      <td><a href="./IR1101/CVP1N_apps">CVP1N_TESEA</a> <a href="./IR18xx/CVP2N_apps">CVP2N_TESEA</a></td>
+      <td><a href="./IR1101/CVP_apps/CVP1N_TESEA">CVP1N_TESEA</a> <a href="./IR18xx/CVP_apps/CVP2N_TESEA">CVP2N_TESEA</a></td>
       <td>IR1101 & IR1800</td>
       <td>20.18.2+</td>
       <td>ThousandEyes & SEA</td>
