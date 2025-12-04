@@ -130,7 +130,7 @@
       <td>IR8340</td>
       <td>Coming Soon</td>
       <td>NA</td>
-      <td></td>
+      <td>TBD</td>
     </tr>
   </tbody>
 </table>
