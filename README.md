@@ -103,7 +103,7 @@
     <tr>
       <td>10</td>
       <td><a href="./IR18xx/CVP_apps/CVP_UTD">CVP_UTD</a></td>
-      <td>IR1835</td>
+      <td>IR1835 (Policy Group Only)</td>
       <td>20.18.2+</td>
       <td>UTD</td>
       <td>IR1835 Roadways Sample Policy Group export that enables installation of UTD and creates sample NGFW activating UTD features.</td>
