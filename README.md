@@ -7,6 +7,9 @@
 <p> All catalogs are Cisco Validated Profiles (CVP) and their names start with CVP and some other designation. In all profiles (N) in the name refers to a deployment in NAT mode (aka Direct Internet Access or DIA) where LAN traffic is sent directly to the internet, while (R) in the name refers to a routed deployment where all LAN traffic will be routed to a central hub advertising a default route. </p>
 
 <p> The table below lists all IIoT SD-WAN catalogs which have been tested and validated by Cisco for use with Cisco Industrial IoT Platforms (IR1101, IR1800, IR8340). Each published catalog is essentially a tar file that can be imported directly into the matching Catalyst SD-WAN release as a Configuration Group. That group can then be modified further, if needed, prior to attaching and deploying on edge devices.  Catalogs come with certain global values pre-configured to ease deployment, such as interface names, cellular timers optimizations to reduce cellular data usage, pre-defined service VPNs and other services such as NTP, DNS, DHCP, and Logging. Each catalog also comes with a PDF file that explains in more detail the functionality of the catalog. Below is example where to import the Catalog tar file in Cisco SD-WAN </p>
+
+<p> All catalogs with CVPxN in the name provide DIA (Direct Internet Access) to all LAN connected clients and are intended for use when a HUB is not present, a configuration->topology should be deployed to deny all route exchanges with vSmart controllers to avoid edge2edge tunnels. An example is provided below where user shold tag all sites with a tag and then apply the tag to a rule for all inbound and outbound sites in the custom policy (as shown) and activate it, thereby stopping all tunnel formations.</p>
+<img width="1480" height="644" alt="image" src="./metadata/deny-all-topology-for-dia.png" />
 <img width="1480" height="644" alt="image" src="./metadata/cg-import.png" />
 <head>
   Catalog Entries By Release
@@ -30,7 +33,7 @@
       <td>IR1101</td>
       <td>20.15.2+</td>
       <td>NA</td>
-      <td>Single router SD-WAN configuration with wired and single LTE as last resort supporting single service VPN for for horizontal IR1101 deployments. CVP1N provides DIA for connected clients and intended for use when a HUB is not present, a topology should be deployed to deny allow routes to avoid edge2edge tunnels when used.</td>
+      <td>Single router SD-WAN configuration with wired and single LTE as last resort supporting single service VPN for for horizontal IR1101 deployments.</td>
     </tr>
     <tr>
       <td>2</td>
@@ -38,7 +41,7 @@
       <td>IR1800</td>
       <td>20.15.2+</td>
       <td>NA</td>
-      <td>Single router SD-WAN configuration with wired and single LTE as last resort supporting single service VPN for for horizontal IR1800 deployments. CVP2N provides DIA for connected clients and intended for use when a HUB is not present, a topology should be deployed to deny allow routes to avoid edge2edge tunnels when used</td>
+      <td>Single router SD-WAN configuration with wired and single LTE as last resort supporting single service VPN for for horizontal IR1800 deployments.</td>
     </tr>
     <tr>
       <td>3</td>
