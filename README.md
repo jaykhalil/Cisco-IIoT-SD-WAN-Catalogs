@@ -30,7 +30,7 @@
       <td>IR1101</td>
       <td>20.15.2+</td>
       <td>NA</td>
-      <td>Single router SD-WAN configurations with wired and single LTE as last resort supporting single service VPN for for horizontal IR1101 deployments.</td>
+      <td>Single router SD-WAN configuration with wired and single LTE as last resort supporting single service VPN for for horizontal IR1101 deployments. CVP1N provides DIA for connected clients and intended for use when a HUB is not present, a topology should be deployed to deny allow routes to avoid edge2edge tunnels when used.</td>
     </tr>
     <tr>
       <td>2</td>
@@ -38,7 +38,7 @@
       <td>IR1800</td>
       <td>20.15.2+</td>
       <td>NA</td>
-      <td>Single router SD-WAN configurations with wired and single LTE as last resort supporting single service VPN for for horizontal IR1800 deployments.</td>
+      <td>Single router SD-WAN configuration with wired and single LTE as last resort supporting single service VPN for for horizontal IR1800 deployments. CVP2N provides DIA for connected clients and intended for use when a HUB is not present, a topology should be deployed to deny allow routes to avoid edge2edge tunnels when used</td>
     </tr>
     <tr>
       <td>3</td>
@@ -46,7 +46,7 @@
       <td>IR1101 & IR1800</td>
       <td>20.15.2+</td>
       <td>NA</td>
-      <td>Single router SD-WAN configurations with LTE and wired as last resort supporting single service VPN for for horizontal IR deployments. Reverse priority of CVP1N and CVP2N</td>
+      <td>Single router SD-WAN configuration with LTE and wired as last resort supporting single service VPN for for horizontal IR deployments. Reverse priority of CVP1N and CVP2N</td>
     </tr>   
     <tr>
       <td>4</td>
@@ -54,7 +54,7 @@
       <td>IR1101 & IR1835 Roadways</td>
       <td>20.15.2+</td>
       <td>NA</td>
-      <td>Single router SD-WAN configurations with wired and single LTE as last resort supporting multiple service VPN for Roadways deployments with ISE integration and lan port authentication</td>
+      <td>Single router SD-WAN configuration with wired and single LTE as last resort supporting multiple service VPN for Roadways deployments with ISE integration and lan port authentication</td>
     </tr>
     <tr>
       <td>5</td>
@@ -64,7 +64,7 @@
           &amp; IOS 17.18.1/17.15.4
       </td>
       <td>NA</td>
-      <td>Single router SD-WAN configurations with wired and dual LTE in both active/active and active/standby modes, supporting single service VPN for for horizontal IR deployments.</td>
+      <td>Single router SD-WAN configuration with wired and dual LTE in both active/active and active/standby modes, supporting single service VPN for for horizontal IR deployments.</td>
     </tr>
     <tr>
       <td>6</td>
@@ -74,7 +74,7 @@
           &amp; IOS 17.18.1/17.15.4
       </td>
       <td>NA</td>
-      <td>Single router SD-WAN configurations with wired and dual LTE in both active/active and active/standby modes, supporting single service VPN for for horizontal IR deployments.</td>
+      <td>Single router SD-WAN configuration with wired and dual LTE in both active/active and active/standby modes, supporting single service VPN for for horizontal IR deployments.</td>
     </tr>    
     <tr>
       <td>7</td>
@@ -114,7 +114,7 @@
       <td>IR1101 & IR1835 Roadways (CV)</td>
       <td>Coming Soon</td>
       <td>Cyber Vision</td>
-      <td>Single router SD-WAN configurations with wired and single LTE as last resort supporting multiple service VPN for Roadways deployments with ISE integration and lan port authentication. Also includes profile to deploy Cyber Vision sensor in IOX</td>
+      <td>Single router SD-WAN configuration with wired and single LTE as last resort supporting multiple service VPN for Roadways deployments with ISE integration and lan port authentication. Also includes profile to deploy Cyber Vision sensor in IOX</td>
     </tr>
     <tr>
       <td>12</td>
