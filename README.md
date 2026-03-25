@@ -113,9 +113,9 @@
     </tr>
     <tr>
       <td>11</td>
-      <td>CVP5_CV CVP6_CV</td>
-      <td>IR1101 & IR1835 Roadways (CV)</td>
-      <td>Coming Soon</td>
+      <td><a href="./Roadways/CVP5CV">CVP5_CV</a> <a href="./Roadways/CVP6CV">CVP6_CV</a></td>
+      <td>IR1101 & IR1835 Roadways with Cyber Vision</td>
+      <td>20.18.2+</td>
       <td>Cyber Vision</td>
       <td>Single router SD-WAN configuration with wired and single LTE as last resort supporting multiple service VPN for Roadways deployments with ISE integration and lan port authentication. Also includes profile to deploy Cyber Vision sensor in IOX</td>
     </tr>
