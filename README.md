@@ -45,19 +45,19 @@
     </tr>
     <tr>
       <td>3</td>
-      <td><a href="./IR1101/CVP1NX">CVP1NX</a> <a href="./IR18xx/CVP2NX">CVP2NX</a></td>          
-      <td>IR1101 & IR1800</td>
-      <td>20.15.2+</td>
-      <td>NA</td>
-      <td>Single router SD-WAN configuration with LTE and wired as last resort supporting single service VPN for for horizontal IR deployments. Reverse priority of CVP1N and CVP2N</td>
-    </tr>   
-    <tr>
-      <td>4</td>
       <td><a href="./Roadways/CVP5">CVP5</a> <a href="./Roadways/CVP6">CVP6</a></td>
       <td>IR1101 & IR1835 Roadways</td>
       <td>20.15.2+</td>
       <td>NA</td>
       <td>Single router SD-WAN configuration with wired and single LTE as last resort supporting multiple service VPN for Roadways deployments with ISE integration and lan port authentication</td>
+    </tr>   
+    <tr>
+      <td>4</td>
+      <td><a href="./IR1101/CVP1NX">CVP1NX</a> <a href="./IR18xx/CVP2NX">CVP2NX</a></td>          
+      <td>IR1101 & IR1800</td>
+      <td>20.15.2+</td>
+      <td>NA</td>
+      <td>Single router SD-WAN configuration with LTE and wired as last resort supporting single service VPN for for horizontal IR deployments. Reverse priority of CVP1N and CVP2N</td>
     </tr>
     <tr>
       <td>5</td>
