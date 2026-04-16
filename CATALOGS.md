@@ -1,6 +1,6 @@
 # Complete List of All Available SD-WAN Industrial Routers Catalogs
 
-<p> The table below lists all IIoT SD-WAN catalogs which have been tested and validated by Cisco for use with Cisco Industrial IoT Platforms (IR1101, IR1800, IR8340). Each catalog also comes with a PDF file that explains in more detail the functionality of the catalog. Below is example where to import the Catalog tar file in Cisco SD-WAN </p>
+<p> The table below lists all IIoT SD-WAN catalogs that have been tested and validated by Cisco for use with Cisco Industrial IoT platforms (IR1101, IR1800, IR8340). Each catalog also comes with a PDF file that explains in more detail the functionality of the catalog. Below is an example of where to import the catalog tar file in Cisco SD-WAN. </p>
 
 <img width="1480" height="644" alt="image" src="./metadata/cg-import.png" />
 
@@ -38,7 +38,7 @@
       <td>IR1101 & IR1835 Roadways</td>
       <td>20.15.2+</td>
       <td>NA</td>
-      <td>Single router SD-WAN configuration with wired and single LTE as last resort supporting multiple service VPN for Roadways deployments with ISE integration and lan port authentication</td>
+      <td>Single router SD-WAN configuration with wired and single LTE as last resort supporting multiple service VPN for Roadways deployments with ISE integration and LAN port authentication</td>
     </tr>   
     <tr>
       <td>4</td>
@@ -106,7 +106,7 @@
       <td>IR1101 & IR1835 Roadways with Cyber Vision</td>
       <td>20.18.2+</td>
       <td>Cyber Vision</td>
-      <td>Single router SD-WAN configuration with wired and single LTE as last resort supporting multiple service VPN for Roadways deployments with ISE integration and lan port authentication. Also includes profile to deploy Cyber Vision sensor in IOX</td>
+      <td>Single router SD-WAN configuration with wired and single LTE as last resort supporting multiple service VPN for Roadways deployments with ISE integration and LAN port authentication. Also includes a profile to deploy a Cyber Vision sensor in IOX</td>
     </tr>
     <tr>
       <td>12</td>
@@ -127,4 +127,4 @@
   </tbody>
 </table>
 
-<p> Cisco provides the configurations in this catalogs as is for your convenience. These configurations have been built using industry best practices, observed across multiple deployments, which may be beneficial to you. Cisco is not responsible for any technical issues, bugs, or other issues that may arise from your use of these configurations and any resulting indirect, incidental, reliance, consequential, special or exemplary damages or loss of actual or anticipated revenue, profit, business, savings, data goodwill or use, business interruption, damaged data, wasted expenditure or delay in delivery (in all cases, whether direct or indirect). </p>
+<p> Cisco provides the configurations in these catalogs as is for your convenience. These configurations have been built using industry best practices, observed across multiple deployments, which may be beneficial to you. Cisco is not responsible for any technical issues, bugs, or other issues that may arise from your use of these configurations and any resulting indirect, incidental, reliance, consequential, special or exemplary damages or loss of actual or anticipated revenue, profit, business, savings, data goodwill or use, business interruption, damaged data, wasted expenditure or delay in delivery (in all cases, whether direct or indirect). </p>
