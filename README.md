@@ -10,16 +10,14 @@
 
 <table>
   <tr>
-    <td width="62%">
+    <td>
       <h3>Need help choosing a catalog?</h3>
       <p>Use the interactive selector to map your router family, preferred primary WAN, and traffic model to the closest published Cisco IIoT SD-WAN catalog in this repository.</p>
-      <p><a href="./catalog-selector.html">Open the Catalog Selector</a></p>
-    </td>
-    <td>
-      <p><strong>Selection flow</strong></p>
-      <p>1. IR1101 or IR1800</p>
-      <p>2. Primary Ethernet or Primary Cellular</p>
-      <p>3. DIA / NAT or Routed to Enterprise</p>
+      <p>
+        <a href="./catalog-selector.html" style="display:inline-block;padding:14px 20px;border-radius:12px;background:#0b84d8;color:#ffffff;text-decoration:none;font-size:1.08rem;font-weight:700;box-shadow:0 8px 20px rgba(11,132,216,0.22);">
+          Open the Catalog Selector
+        </a>
+      </p>
     </td>
   </tr>
 </table>
