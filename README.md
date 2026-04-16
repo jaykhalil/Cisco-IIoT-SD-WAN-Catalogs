@@ -18,8 +18,7 @@
   </tr>
 </table>
 
-<p> A catalog is essentially a tar file that can be imported directly into the matching Catalyst SD-WAN release as a Configuration Group. That group can then be modified further, if needed, prior to attaching and deploying on edge devices. Catalogs come with certain global values pre-configured to ease deployment, such as interface names, cellular timers optimizations to reduce cellular data usage, pre-defined service VPNs and other services such as NTP, DNS, DHCP, and Logging. Each catalog also comes with a PDF file that explains in more detail the functionality of the catalog. Below is example where to import the Catalog tar file in Cisco SD-WAN </p>
-
+<p> Once a catalog is imported as a Configuration Group, that group can then be modified further, prior to attaching and deploying on edge devices. Catalogs come with certain global values pre-configured to ease deployment, such as interface names, cellular timers optimizations to reduce cellular data usage, pre-defined service VPNs and other services such as NTP, DNS, DHCP, and Logging. Each catalog also comes with a PDF file that explains in more detail the functionality of the catalog. Below is example where to import the Catalog tar file in Cisco SD-WAN </p>
 <img width="1480" height="644" alt="image" src="./metadata/cg-import.png" />
 
 <p>For a complete list of all available catalogs: <a href="./CATALOGS.md"> SD-WAN Industrial Routers Catalogs</a></p>
