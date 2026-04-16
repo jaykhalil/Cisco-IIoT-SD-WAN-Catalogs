@@ -23,3 +23,7 @@
 <p> Once a catalog is imported as a Configuration Group, that group can then be modified further, prior to attaching and deploying on edge devices. Catalogs come with certain global values pre-configured to ease deployment, such as interface names, cellular timer optimizations to reduce cellular data usage, pre-defined service VPNs and other services such as NTP, DNS, DHCP, and Logging. Each catalog also comes with a PDF file that explains in more detail the functionality of the catalog. Below is an example of where to import the catalog tar file in Cisco SD-WAN. </p>
 
 ![Catalog import screenshot](./metadata/cg-import.png)
+
+## Disclaimer
+
+Cisco provides the configurations in these catalogs as is for your convenience. These configurations have been built using industry best practices, observed across multiple deployments, which may be beneficial to you. Cisco is not responsible for any technical issues, bugs, or other issues that may arise from your use of these configurations and any resulting indirect, incidental, reliance, consequential, special or exemplary damages or loss of actual or anticipated revenue, profit, business, savings, data goodwill or use, business interruption, damaged data, wasted expenditure or delay in delivery, in all cases whether direct or indirect.
