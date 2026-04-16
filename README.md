@@ -13,11 +13,7 @@
     <td>
       <h3>Need help choosing a catalog?</h3>
       <p>Use the interactive selector to map your router family, preferred primary WAN, and traffic model to the closest published Cisco IIoT SD-WAN catalog in this repository.</p>
-      <p>
-        <a href="https://jaykhalil.github.io/Cisco-IIoT-SD-WAN-Catalogs/catalog-selector.html" style="display:inline-block;padding:18px 26px;border-radius:14px;background:#066fc2;color:#ffffff;text-decoration:none;font-size:2.36rem;font-weight:800;border:1px solid #045a9d;box-shadow:0 10px 24px rgba(6,111,194,0.28);">
-          Open the Catalog Selector
-        </a>
-      </p>
+      <h2><a href="https://jaykhalil.github.io/Cisco-IIoT-SD-WAN-Catalogs/catalog-selector.html">Open the Catalog Selector</a></h2>
     </td>
   </tr>
 </table>
