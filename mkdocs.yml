@@ -1,0 +1,25 @@
+site_name: Cisco IIoT SD-WAN Catalogs
+site_description: Local browser for the Cisco IIoT SD-WAN catalog repository
+theme:
+  name: material
+  palette:
+    primary: blue
+    accent: light blue
+markdown_extensions:
+  - tables
+  - attr_list
+  - md_in_html
+docs_dir: docs
+use_directory_urls: true
+exclude_docs: |
+  .git/
+  .DS_Store
+  site/
+  __pycache__/
+nav:
+  - Home: index.md
+  - Catalog Selector: catalog-selector.html
+  - Repository Browser: repo-browser.md
+  - IR1101 Catalogs: ir1101.md
+  - IR1800 Catalogs: ir1800.md
+  - Roadways Catalogs: roadways.md

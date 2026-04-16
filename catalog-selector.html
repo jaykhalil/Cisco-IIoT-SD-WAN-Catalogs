@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cisco IIoT SD-WAN Catalog Selector</title>
+  <style>
+    :root {
+      --bg: #eef3f8;
+      --panel: #ffffff;
+      --panel-alt: linear-gradient(135deg, #0f2742, #1f5f8b);
+      --text: #10243e;
+      --muted: #5c6f82;
+      --accent: #0b84d8;
+      --accent-dark: #075f9a;
+      --border: #d7e2ec;
+      --success-bg: #edf9f3;
+      --success-border: #9bd3b1;
+      --warning-bg: #fff6e8;
+      --warning-border: #e9c580;
+      --shadow: 0 18px 40px rgba(16, 36, 62, 0.12);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(11, 132, 216, 0.15), transparent 32%),
+        linear-gradient(180deg, #f8fbfd 0%, var(--bg) 100%);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    .hero {
+      padding: 24px 26px;
+      border-radius: 28px;
+      background: var(--panel-alt);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-top {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 8px;
+    }
+
+    .top-link {
+      display: inline-flex;
+      align-items: center;
+      color: #9fe1ff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .top-link:hover {
+      color: #d8f4ff;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+      line-height: 1.1;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      font-size: 1.3rem;
+    }
+
+    .section-copy {
+      margin: 0 0 24px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .step-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .step {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: #fbfdff;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: #dceefe;
+      color: var(--accent-dark);
+      font-weight: 700;
+    }
+
+    .step h3 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .choices {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+    }
+
+    .choice {
+      position: relative;
+    }
+
+    .choice input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .choice label {
+      display: block;
+      min-height: 100%;
+      padding: 14px 14px 15px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: #fff;
+      cursor: pointer;
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .choice label strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.98rem;
+    }
+
+    .choice label span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.45;
+    }
+
+    .choice input:checked + label {
+      border-color: var(--accent);
+      box-shadow: 0 10px 24px rgba(11, 132, 216, 0.16);
+      transform: translateY(-2px);
+    }
+
+    .step.hidden {
+      display: none;
+    }
+
+    .summary {
+      display: grid;
+      gap: 18px;
+    }
+
+    .summary-box {
+      border-radius: 18px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      background: #fbfdff;
+    }
+
+    .summary-box h3 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+    }
+
+    .selection-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .selection-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e8eef4;
+      font-size: 0.95rem;
+    }
+
+    .selection-list li:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .selection-list span {
+      color: var(--muted);
+    }
+
+    .result-card {
+      min-height: 280px;
+      border-radius: 20px;
+      padding: 22px;
+      border: 1px dashed #bdd5e5;
+      background:
+        linear-gradient(180deg, rgba(11, 132, 216, 0.05), rgba(11, 132, 216, 0.01)),
+        #ffffff;
+    }
+
+    .result-card.match {
+      background: var(--success-bg);
+      border: 1px solid var(--success-border);
+    }
+
+    .result-card.warning {
+      background: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(16, 36, 62, 0.08);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .result-card h2 {
+      margin: 0 0 10px;
+      font-size: 1.8rem;
+    }
+
+    .result-card p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+    }
+
+    .result-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      color: #fff;
+      background: var(--accent);
+    }
+
+    .button.secondary {
+      color: var(--text);
+      background: #eaf3fb;
+    }
+
+    .notes {
+      margin: 28px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .notes li + li {
+      margin-top: 8px;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+  <body>
+  <main>
+    <section class="hero">
+      <div class="hero-top">
+        <a class="top-link" href="./">Back to Home</a>
+      </div>
+      <h1>SD-WAN Industrial Routers Catalog Selector</h1>
+      <p>Choose whether the use case is Roadways or not, then follow the guided path. The selector only shows branches for which a catalog exists.</p>
+    </section>
+
+    <section class="layout">
+      <div class="panel">
+        <h2 class="section-title">Selection Flow</h2>
+        <p class="section-copy">This flow is constrained to published IR1101 and IR1800 catalogs.</p>
+
+        <div class="step-list">
+          <section id="deployment-step" class="step">
+            <div class="step-header">
+              <div class="step-number">1</div>
+              <h3>Choose the use case</h3>
+            </div>
+            <div class="choices">
+              <div class="choice">
+                <input id="deploy-standard" type="radio" name="deployment" value="standard" checked>
+                <label for="deploy-standard">
+                  <strong>Horizontal Use Case</strong>
+                  <span>Use the standard industrial router catalog flow.</span>
+                </label>
+              </div>
+              <div class="choice">
+                <input id="deploy-roadways" type="radio" name="deployment" value="roadways">
+                <label for="deploy-roadways">
+                  <strong>Roadways</strong>
+                  <span>Show the published roadway catalog options only.</span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <section id="roadways-step" class="step hidden">
+            <div class="step-header">
+              <div class="step-number">2</div>
+              <h3>Choose the roadway platform</h3>
+            </div>
+            <div class="choices">
+              <div class="choice">
+                <input id="roadways-ir1101" type="radio" name="roadways_platform" value="ir1101" checked>
+                <label for="roadways-ir1101">
+                  <strong>IR1101</strong>
+                  <span>Roadways catalog path for IR1101.</span>
+                </label>
+              </div>
+              <div class="choice">
+                <input id="roadways-ir1800" type="radio" name="roadways_platform" value="ir1800">
+                <label for="roadways-ir1800">
+                  <strong>IR1800</strong>
+                  <span>Roadways catalog path for IR1800 family.</span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <section id="roadways-cv-step" class="step hidden">
+            <div class="step-header">
+              <div class="step-number">3</div>
+              <h3>Choose Cyber Vision</h3>
+            </div>
+            <div class="choices">
+              <div class="choice">
+                <input id="roadways-base" type="radio" name="roadways_cv" value="base" checked>
+                <label for="roadways-base">
+                  <strong>Without Cyber Vision</strong>
+                  <span>Use the base roadway catalog.</span>
+                </label>
+              </div>
+              <div class="choice">
+                <input id="roadways-cv" type="radio" name="roadways_cv" value="cv">
+                <label for="roadways-cv">
+                  <strong>With Cyber Vision</strong>
+                  <span>Use the roadway catalog that includes Cyber Vision.</span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <section id="platform-step" class="step">
+            <div class="step-header">
+              <div class="step-number">2</div>
+              <h3>Choose the platform</h3>
+            </div>
+            <div class="choices">
+              <div class="choice">
+                <input id="platform-ir1101" type="radio" name="platform" value="ir1101" checked>
+                <label for="platform-ir1101">
+                  <strong>IR1101</strong>
+                  <span>Compact industrial router for smaller field sites.</span>
+                </label>
+              </div>
+              <div class="choice">
+                <input id="platform-ir1800" type="radio" name="platform" value="ir1800">
+                <label for="platform-ir1800">
+                  <strong>IR1800</strong>
+                  <span>Higher-scale industrial router family for broader site needs.</span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <section id="lte-step" class="step">
+            <div class="step-header">
+              <div class="step-number">2</div>
+              <h3>Choose the LTE design</h3>
+            </div>
+            <div class="choices">
+              <div class="choice">
+                <input id="lte-single" type="radio" name="lte" value="single" checked>
+                <label for="lte-single">
+                  <strong>Single LTE</strong>
+                  <span>One cellular interface paired with wired connectivity.</span>
+                </label>
+              </div>
+              <div class="choice">
+                <input id="lte-dual" type="radio" name="lte" value="dual">
+                <label for="lte-dual">
+                  <strong>Dual LTE</strong>
+                  <span>Two cellular links with active/active or active/standby patterns.</span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <section id="single-lte-step" class="step">
+            <div class="step-header">
+              <div class="step-number">3</div>
+              <h3>Choose the preferred primary WAN</h3>
+            </div>
+            <div class="choices">
+              <div class="choice">
+                <input id="primary-ethernet" type="radio" name="primary" value="ethernet" checked>
+                <label for="primary-ethernet">
+                  <strong>Primary Ethernet</strong>
+                  <span>Wired is preferred, LTE is backup or last resort.</span>
+                </label>
+              </div>
+              <div class="choice">
+                <input id="primary-cellular" type="radio" name="primary" value="cellular">
+                <label for="primary-cellular">
+                  <strong>Primary Cellular</strong>
+                  <span>LTE is preferred, wired acts as backup or lower priority.</span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <section id="single-mode-step" class="step">
+            <div class="step-header">
+              <div class="step-number">4</div>
+              <h3>Choose the traffic model</h3>
+            </div>
+            <div class="choices">
+              <div class="choice">
+                <input id="mode-dia" type="radio" name="mode" value="dia" checked>
+                <label for="mode-dia">
+                  <strong>DIA / NAT</strong>
+                  <span>Service VPN traffic exits locally to the internet.</span>
+                </label>
+              </div>
+              <div class="choice">
+                <input id="mode-routed" type="radio" name="mode" value="routed">
+                <label for="mode-routed">
+                  <strong>Routed to Enterprise</strong>
+                  <span>Service VPN traffic is sent to a central hub or enterprise core.</span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <section id="app-step" class="step hidden">
+            <div class="step-header">
+              <div class="step-number">5</div>
+              <h3>Choose application add-ons</h3>
+            </div>
+            <div class="choices">
+              <div class="choice">
+                <input id="app-none" type="radio" name="app_profile" value="none" checked>
+                <label for="app-none">
+                  <strong>No App Add-On</strong>
+                  <span>Use the base DIA catalog without bundled applications.</span>
+                </label>
+              </div>
+              <div class="choice">
+                <input id="app-sea" type="radio" name="app_profile" value="sea">
+                <label for="app-sea">
+                  <strong>SEA</strong>
+                  <span>Add Cisco Secure Equipment Access.</span>
+                </label>
+              </div>
+              <div class="choice">
+                <input id="app-te" type="radio" name="app_profile" value="te">
+                <label for="app-te">
+                  <strong>ThousandEyes</strong>
+                  <span>Add ThousandEyes agent deployment.</span>
+                </label>
+              </div>
+              <div class="choice">
+                <input id="app-tesea" type="radio" name="app_profile" value="tesea">
+                <label for="app-tesea">
+                  <strong>TE + SEA</strong>
+                  <span>Add both ThousandEyes and Secure Equipment Access.</span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <section id="dual-mode-step" class="step hidden">
+            <div class="step-header">
+              <div class="step-number">3</div>
+              <h3>Choose the dual-LTE operating mode</h3>
+            </div>
+            <div class="choices">
+              <div class="choice">
+                <input id="dual-aa" type="radio" name="dual_mode" value="active_active" checked>
+                <label for="dual-aa">
+                  <strong>Active/Active</strong>
+                  <span>Both LTE paths participate in traffic handling.</span>
+                </label>
+              </div>
+              <div class="choice">
+                <input id="dual-as" type="radio" name="dual_mode" value="active_standby">
+                <label for="dual-as">
+                  <strong>Active/Standby</strong>
+                  <span>One LTE path is preferred while the second stays in reserve.</span>
+                </label>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <ul class="notes">
+          <li>`N` catalogs are NAT / DIA oriented.</li>
+          <li>`R` catalogs are routed to an enterprise hub.</li>
+          <li>`NX` catalogs keep the NAT / DIA model but reverse the WAN preference so LTE is primary.</li>
+          <li>Dual-LTE catalogs are their own branch and do not expose the single-LTE routed/cellular permutations.</li>
+        </ul>
+      </div>
+
+      <aside class="summary">
+        <section class="panel summary-box">
+          <h3>Current Selection</h3>
+          <ul class="selection-list">
+            <li><strong>Use Case</strong> <span id="selection-deployment">Not Roadways</span></li>
+            <li><strong>Roadways Platform</strong> <span id="selection-roadways-platform">Not Used</span></li>
+            <li><strong>Cyber Vision</strong> <span id="selection-roadways-cv">Not Used</span></li>
+            <li><strong>Platform</strong> <span id="selection-platform">IR1101</span></li>
+            <li><strong>LTE Design</strong> <span id="selection-lte">Single LTE</span></li>
+            <li><strong>Primary WAN</strong> <span id="selection-primary">Ethernet</span></li>
+            <li><strong>Traffic Model</strong> <span id="selection-mode">DIA / NAT</span></li>
+            <li><strong>Applications</strong> <span id="selection-app">None</span></li>
+            <li><strong>Dual-LTE Mode</strong> <span id="selection-dual-mode">Not Used</span></li>
+          </ul>
+        </section>
+
+        <section id="result-card" class="result-card">
+          <div class="eyebrow">Recommendation</div>
+          <h2>CVP1N</h2>
+          <p>IR1101 with primary Ethernet and DIA maps to the standard NAT catalog with wired primary and LTE backup.</p>
+          <div class="result-links">
+            <a class="button" href="./IR1101/CVP1N/">Open Catalog Folder</a>
+            <a class="button secondary" href="./IR1101/CVP1N/CVP1N_IR1101_Wired_LTE_Backup_NAT.pdf">Open PDF</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    const labels = {
+      deployment: {
+        standard: "Horizontal Use",
+        roadways: "Roadways"
+      },
+      roadwaysPlatform: {
+        ir1101: "IR1101",
+        ir1800: "IR1800"
+      },
+      roadwaysCv: {
+        base: "Without Cyber Vision",
+        cv: "With Cyber Vision"
+      },
+      platform: {
+        ir1101: "IR1101",
+        ir1800: "IR1800"
+      },
+      lte: {
+        single: "Single LTE",
+        dual: "Dual LTE"
+      },
+      primary: {
+        ethernet: "Ethernet",
+        cellular: "Cellular"
+      },
+      mode: {
+        dia: "DIA / NAT",
+        routed: "Routed to Enterprise"
+      },
+      app: {
+        none: "None",
+        sea: "SEA",
+        te: "ThousandEyes",
+        tesea: "TE + SEA"
+      },
+      dualMode: {
+        active_active: "Active/Active",
+        active_standby: "Active/Standby"
+      }
+    };
+
+    const results = {
+      "roadways|ir1101|base": {
+        state: "match",
+        title: "CVP5",
+        description: "Roadways use case on IR1101 with the published routed roadway base catalog.",
+        tar: "./Roadways/CVP5/CVP5-export-2025-05-05T14_11_25.tar.gz",
+        pdf: "./Roadways/CVP5/CVP5_IR1101_Roadways_Routed.pdf"
+      },
+      "roadways|ir1101|cv": {
+        state: "match",
+        title: "CVP5_CV",
+        description: "Roadways use case on IR1101 with the published Cyber Vision roadway catalog.",
+        tar: "./Roadways/CVP5CV/CVP5_CV-export-2026-03-26T12_51_42.tar.gz",
+        pdf: "./Roadways/CVP5CV/CVP5_CV_IR1101_Roadways_Routed.docx"
+      },
+      "roadways|ir1800|base": {
+        state: "match",
+        title: "CVP6",
+        description: "Roadways use case on IR1835 with the published routed roadway base catalog.",
+        tar: "./Roadways/CVP6/CVP6-export-2025-05-05T14_12_45.tar.gz",
+        pdf: "./Roadways/CVP6/CVP6_IR1835_Roadways_Routed.pdf"
+      },
+      "roadways|ir1800|cv": {
+        state: "match",
+        title: "CVP6_CV",
+        description: "Roadways use case on IR1835 with the published Cyber Vision roadway catalog.",
+        tar: "./Roadways/CVP6CV/CVP6_CV-export-2026-03-26T12_52_16.tar.gz",
+        pdf: "./Roadways/CVP6CV/CVP6_CV_IR1835_Roadways_Routed.docx"
+      },
+      "ir1101|single|ethernet|dia|none": {
+        state: "match",
+        title: "CVP1N",
+        description: "IR1101 with primary Ethernet and DIA maps to the standard NAT catalog with wired primary and LTE backup.",
+        tar: "./IR1101/CVP1N/CVP1N-export-2025-05-05T19_56_50.tar.gz",
+        pdf: "./IR1101/CVP1N/CVP1N_IR1101_Wired_LTE_Backup_NAT.pdf"
+      },
+      "ir1101|single|ethernet|dia|sea": {
+        state: "match",
+        title: "CVP1N_SEA",
+        description: "IR1101 with primary Ethernet, DIA, and Secure Equipment Access maps to the published CVP1N_SEA application catalog.",
+        tar: "./IR1101/CVP_apps/CVP1N_SEA/CVP1N_SEA-export-2025-10-23T17_09_42.tar.gz",
+        pdf: "./IR1101/CVP_apps/CVP1N_SEA/CVP1N_SEA_IR1101_Wired_LTE_Backup_NAT.pdf"
+      },
+      "ir1101|single|ethernet|dia|te": {
+        state: "match",
+        title: "CVP1N_TE",
+        description: "IR1101 with primary Ethernet, DIA, and ThousandEyes maps to the published CVP1N_TE application catalog.",
+        tar: "./IR1101/CVP_apps/CVP1N_TE/CVP1N_TE-export-2025-10-23T14_02_38.tar.gz",
+        pdf: "./IR1101/CVP_apps/CVP1N_TE/CVP1N_TE_IR1101_Wired_LTE_Backup_NAT.pdf"
+      },
+      "ir1101|single|ethernet|dia|tesea": {
+        state: "match",
+        title: "CVP1N_TESEA",
+        description: "IR1101 with primary Ethernet, DIA, and both ThousandEyes and Secure Equipment Access maps to the published CVP1N_TESEA application catalog.",
+        tar: "./IR1101/CVP_apps/CVP1N_TESEA/CVP1N_TESEA-export-2025-10-23T14_03_04.tar.gz",
+        pdf: "./IR1101/CVP_apps/CVP1N_TESEA/CVP1N_TESEA_IR1101_Wired_LTE_Backup_NAT.pdf"
+      },
+      "ir1101|single|ethernet|routed": {
+        state: "match",
+        title: "CVP1R",
+        description: "IR1101 with primary Ethernet and traffic routed back to the enterprise maps to the routed catalog with wired primary and LTE backup.",
+        tar: "./IR1101/CVP1R/CVP1R-export-2025-05-06T15_23_02.tar.gz",
+        pdf: "./IR1101/CVP1R/CVP1R_IR1101_Wired_LTE_Backup_Routed.pdf"
+      },
+      "ir1101|single|cellular|dia": {
+        state: "match",
+        title: "CVP1NX",
+        description: "IR1101 with primary Cellular and DIA maps to the reverse-priority NAT catalog where LTE is preferred and wired is backup.",
+        tar: "./IR1101/CVP1NX/CVP1NX-export-2025-07-31T16_28_09.tar.gz",
+        pdf: "./IR1101/CVP1NX/CVP1NX_IR1101_LTE_Wired_Backup_NAT.pdf"
+      },
+      "ir1101|dual|active_active": {
+        state: "match",
+        title: "CVP3NAA",
+        description: "IR1101 dual-LTE active/active deployments map directly to the published CVP3NAA catalog.",
+        tar: "./IR1101/CVP3NAA/CVP3NAA-export-2025-08-05T17_54_15.tar.gz",
+        pdf: "./IR1101/CVP3NAA/CVP3NAA_IR1101_Dual_LTE_Active_Active.pdf"
+      },
+      "ir1101|dual|active_standby": {
+        state: "match",
+        title: "CVP3NAS",
+        description: "IR1101 dual-LTE active/standby deployments map directly to the published CVP3NAS catalog.",
+        tar: "./IR1101/CVP3NAS/CVP3NAS-export-2025-08-05T17_54_54.tar.gz",
+        pdf: "./IR1101/CVP3NAS/CVP3NAS_IR1101_Dual_LTE_Active_Stdby.pdf"
+      },
+      "ir1800|single|ethernet|dia|none": {
+        state: "match",
+        title: "CVP2N",
+        description: "IR1800 with primary Ethernet and DIA maps to the standard NAT catalog with wired primary and LTE backup.",
+        tar: "./IR18xx/CVP2N/CVP2N-export-2025-05-06T18_54_02.tar.gz",
+        pdf: "./IR18xx/CVP2N/CVP2N_IR1800_Wired_LTE_Backup_NAT.pdf"
+      },
+      "ir1800|single|ethernet|dia|sea": {
+        state: "match",
+        title: "CVP2N_SEA",
+        description: "IR1800 with primary Ethernet, DIA, and Secure Equipment Access maps to the published CVP2N_SEA application catalog.",
+        tar: "./IR18xx/CVP_apps/CVP2N_SEA/CVP2N_SEA-export-2025-10-23T17_22_33.tar.gz",
+        pdf: "./IR18xx/CVP_apps/CVP2N_SEA/CVP2N_SEA_IR1800_Wired_LTE_Backup_NAT.pdf"
+      },
+      "ir1800|single|ethernet|dia|te": {
+        state: "match",
+        title: "CVP2N_TE",
+        description: "IR1800 with primary Ethernet, DIA, and ThousandEyes maps to the published CVP2N_TE application catalog.",
+        tar: "./IR18xx/CVP_apps/CVP2N_TE/CVP2N_TE-export-2025-10-23T14_07_52.tar.gz",
+        pdf: "./IR18xx/CVP_apps/CVP2N_TE/CVP2N_TE_IR1800_Wired_LTE_Backup_NAT.pdf"
+      },
+      "ir1800|single|ethernet|dia|tesea": {
+        state: "match",
+        title: "CVP2N_TESEA",
+        description: "IR1800 with primary Ethernet, DIA, and both ThousandEyes and Secure Equipment Access maps to the published CVP2N_TESEA application catalog.",
+        tar: "./IR18xx/CVP_apps/CVP2N_TESEA/CVP2N_TESEA-export-2025-11-05T21_15_03.tar.gz",
+        pdf: "./IR18xx/CVP_apps/CVP2N_TESEA/CVP2N_TESEA_IR1800_Wired_LTE_Backup_NAT.pdf"
+      },
+      "ir1800|single|ethernet|routed": {
+        state: "match",
+        title: "CVP2R",
+        description: "IR1800 with primary Ethernet and traffic routed back to the enterprise maps to the routed catalog with wired primary and LTE backup.",
+        tar: "./IR18xx/CVP2R/CVP2R-export-2025-05-06T18_54_22.tar.gz",
+        pdf: "./IR18xx/CVP2R/CVP2R_IR1800_Wired_LTE_Backup_Routed.pdf"
+      },
+      "ir1800|single|cellular|dia": {
+        state: "match",
+        title: "CVP2NX",
+        description: "IR1800 with primary Cellular and DIA maps to the reverse-priority NAT catalog where LTE is preferred and wired is backup.",
+        tar: "./IR18xx/CVP2NX/CVP2NX-export-2025-07-31T16_33_13.tar.gz",
+        pdf: "./IR18xx/CVP2NX/CVP2NX_IR1800_LTE_Wired_Backup_NAT.pdf"
+      },
+      "ir1800|dual|active_active": {
+        state: "match",
+        title: "CVP4NAA",
+        description: "IR1800 dual-LTE active/active deployments map directly to the published CVP4NAA catalog.",
+        tar: "./IR18xx/CVP4NAA/CVP4NAA-export-2025-08-05T17_54_34.tar.gz",
+        pdf: "./IR18xx/CVP4NAA/CVP4NAA_IR1800_Dual_LTE_Active_Active.pdf"
+      },
+      "ir1800|single|cellular|routed": {
+        state: "warning",
+        title: "No Exact Match Published",
+        description: "There is no published IR1800 catalog in this repo for primary Cellular with enterprise-routed traffic. The valid published single-LTE paths stop at CVP2R for routed and CVP2NX for cellular-primary DIA.",
+        links: [
+          { href: "./IR18xx/CVP2R/", label: "Closest Routed: CVP2R", secondary: false },
+          { href: "./IR18xx/CVP2NX/", label: "Closest Cellular-Primary: CVP2NX", secondary: true }
+        ]
+      },
+      "ir1800|dual|active_standby": {
+        state: "match",
+        title: "CVP4NAS",
+        description: "IR1800 dual-LTE active/standby deployments map directly to the published CVP4NAS catalog.",
+        tar: "./IR18xx/CVP4NAS/CVP4NAS-export-2025-08-05T17_55_12.tar.gz",
+        pdf: "./IR18xx/CVP4NAS/CVP4NAS_IR1800_Dual_LTE_Active_Stdby.pdf"
+      }
+    };
+
+    const selectors = {
+      deployment: document.getElementById("selection-deployment"),
+      roadwaysPlatform: document.getElementById("selection-roadways-platform"),
+      roadwaysCv: document.getElementById("selection-roadways-cv"),
+      platform: document.getElementById("selection-platform"),
+      lte: document.getElementById("selection-lte"),
+      primary: document.getElementById("selection-primary"),
+      mode: document.getElementById("selection-mode"),
+      app: document.getElementById("selection-app"),
+      dualMode: document.getElementById("selection-dual-mode")
+    };
+
+    const resultCard = document.getElementById("result-card");
+    const deploymentStep = document.getElementById("deployment-step");
+    const roadwaysStep = document.getElementById("roadways-step");
+    const roadwaysCvStep = document.getElementById("roadways-cv-step");
+    const platformStep = document.getElementById("platform-step");
+    const lteStep = document.getElementById("lte-step");
+    const singleLteStep = document.getElementById("single-lte-step");
+    const singleModeStep = document.getElementById("single-mode-step");
+    const appStep = document.getElementById("app-step");
+    const dualModeStep = document.getElementById("dual-mode-step");
+
+    function getValue(name) {
+      return document.querySelector(`input[name="${name}"]:checked`).value;
+    }
+
+    function setRadioValue(name, value) {
+      const input = document.querySelector(`input[name="${name}"][value="${value}"]`);
+      if (input) input.checked = true;
+    }
+
+    function setSectionEnabled(section, enabled) {
+      section.querySelectorAll('input').forEach((input) => {
+        input.disabled = !enabled;
+      });
+      section.style.display = enabled ? "" : "none";
+    }
+
+    function syncFlow() {
+      const deployment = getValue("deployment");
+      const lte = getValue("lte");
+      const primary = getValue("primary");
+      const mode = getValue("mode");
+
+      deploymentStep.classList.remove("hidden");
+      setSectionEnabled(deploymentStep, true);
+
+      if (deployment === "roadways") {
+        roadwaysStep.classList.remove("hidden");
+        roadwaysCvStep.classList.remove("hidden");
+        platformStep.classList.add("hidden");
+        lteStep.classList.add("hidden");
+        singleLteStep.classList.add("hidden");
+        singleModeStep.classList.add("hidden");
+        appStep.classList.add("hidden");
+        dualModeStep.classList.add("hidden");
+        setSectionEnabled(lteStep, false);
+        setSectionEnabled(singleLteStep, false);
+        setSectionEnabled(singleModeStep, false);
+        setSectionEnabled(appStep, false);
+        setSectionEnabled(dualModeStep, false);
+        selectors.platform.textContent = "Not Used";
+        selectors.lte.textContent = "Not Used";
+        selectors.primary.textContent = "Not Used";
+        selectors.mode.textContent = "Not Used";
+        selectors.app.textContent = "Not Used";
+        selectors.dualMode.textContent = "Not Used";
+        return;
+      }
+
+      roadwaysStep.classList.add("hidden");
+      roadwaysCvStep.classList.add("hidden");
+      platformStep.classList.remove("hidden");
+      setSectionEnabled(lteStep, true);
+      setSectionEnabled(singleLteStep, true);
+      setSectionEnabled(singleModeStep, true);
+      setSectionEnabled(appStep, true);
+      setSectionEnabled(dualModeStep, true);
+      lteStep.classList.remove("hidden");
+
+      if (lte === "dual") {
+        singleLteStep.classList.add("hidden");
+        singleModeStep.classList.add("hidden");
+        appStep.classList.add("hidden");
+        dualModeStep.classList.remove("hidden");
+        selectors.primary.textContent = "Not Used";
+        selectors.mode.textContent = "Not Used";
+        selectors.app.textContent = "Not Used";
+      } else {
+        singleLteStep.classList.remove("hidden");
+        singleModeStep.classList.remove("hidden");
+        dualModeStep.classList.add("hidden");
+
+        if (primary === "cellular") {
+          setRadioValue("mode", "dia");
+          document.getElementById("mode-routed").disabled = true;
+          document.querySelector('label[for="mode-routed"]').style.opacity = "0.45";
+          document.querySelector('label[for="mode-routed"]').style.cursor = "not-allowed";
+        } else {
+          document.getElementById("mode-routed").disabled = false;
+          document.querySelector('label[for="mode-routed"]').style.opacity = "1";
+          document.querySelector('label[for="mode-routed"]').style.cursor = "pointer";
+        }
+
+        if (primary === "ethernet" && mode === "dia") {
+          appStep.classList.remove("hidden");
+        } else {
+          appStep.classList.add("hidden");
+          setRadioValue("app_profile", "none");
+        }
+      }
+    }
+
+    function buildLinks(result) {
+      if (result.links) {
+        return result.links.map((link) => {
+          const buttonClass = link.secondary ? "button secondary" : "button";
+          return `<a class="${buttonClass}" href="${link.href}">${link.label}</a>`;
+        }).join("");
+      }
+
+      return `
+        <a class="button" href="${result.tar}" download>Download Catalog</a>
+        <a class="button secondary" href="${result.pdf}">Open PDF</a>
+      `;
+    }
+
+    function render() {
+      const deployment = getValue("deployment");
+      const roadwaysPlatform = getValue("roadways_platform");
+      const roadwaysCv = getValue("roadways_cv");
+      const platform = getValue("platform");
+      const lte = getValue("lte");
+      const primary = getValue("primary");
+      const mode = getValue("mode");
+      const appProfile = getValue("app_profile");
+      const dualMode = getValue("dual_mode");
+      const key = deployment === "roadways"
+        ? `${deployment}|${roadwaysPlatform}|${roadwaysCv}`
+        : (lte === "dual"
+          ? `${platform}|${lte}|${dualMode}`
+          : (primary === "ethernet" && mode === "dia"
+            ? `${platform}|${lte}|${primary}|${mode}|${appProfile}`
+            : `${platform}|${lte}|${primary}|${mode}`));
+      const result = results[key];
+
+      selectors.deployment.textContent = labels.deployment[deployment];
+      selectors.roadwaysPlatform.textContent = deployment === "roadways" ? labels.roadwaysPlatform[roadwaysPlatform] : "Not Used";
+      selectors.roadwaysCv.textContent = deployment === "roadways" ? labels.roadwaysCv[roadwaysCv] : "Not Used";
+      selectors.platform.textContent = labels.platform[platform];
+      selectors.lte.textContent = labels.lte[lte];
+      selectors.platform.textContent = deployment === "roadways" ? "Not Used" : labels.platform[platform];
+      selectors.lte.textContent = deployment === "roadways" ? "Not Used" : labels.lte[lte];
+      selectors.primary.textContent = (deployment === "roadways" || lte === "dual") ? "Not Used" : labels.primary[primary];
+      selectors.mode.textContent = (deployment === "roadways" || lte === "dual") ? "Not Used" : labels.mode[mode];
+      selectors.app.textContent = (deployment === "standard" && lte === "single" && primary === "ethernet" && mode === "dia")
+        ? labels.app[appProfile]
+        : "Not Used";
+      selectors.dualMode.textContent = (deployment === "standard" && lte === "dual") ? labels.dualMode[dualMode] : "Not Used";
+
+      resultCard.className = `result-card ${result.state}`;
+      resultCard.innerHTML = `
+        <div class="eyebrow">Recommendation</div>
+        <h2>${result.title}</h2>
+        <p>${result.description}</p>
+        <div class="result-links">${buildLinks(result)}</div>
+      `;
+    }
+
+    document.querySelectorAll('input[type="radio"]').forEach((input) => {
+      input.addEventListener("change", () => {
+        syncFlow();
+        render();
+      });
+    });
+
+    syncFlow();
+    render();
+  </script>
+</body>
+</html>
