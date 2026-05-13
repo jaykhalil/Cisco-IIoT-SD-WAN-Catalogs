@@ -535,6 +535,13 @@
                   <span>Add both ThousandEyes and Secure Equipment Access.</span>
                 </label>
               </div>
+              <div class="choice" id="app-utd-choice">
+                <input id="app-utd" type="radio" name="app_profile" value="utd">
+                <label for="app-utd">
+                  <strong>Cisco Unified Threat Defense (UTD)</strong>
+                  <span>Add integrated threat inspection with Cisco UTD.</span>
+                </label>
+              </div>
             </div>
           </section>
 
@@ -633,7 +640,8 @@
         none: "None",
         sea: "SEA",
         te: "ThousandEyes",
-        tesea: "TE + SEA"
+        tesea: "TE + SEA",
+        utd: "Cisco UTD"
       },
       dualMode: {
         active_active: "Active/Active",
@@ -754,6 +762,13 @@
         tar: "./IR18xx/CVP_apps/CVP2N_TESEA/CVP2N_TESEA-export-2025-11-05T21_15_03.tar.gz",
         pdf: "./IR18xx/CVP_apps/CVP2N_TESEA/CVP2N_TESEA_IR1800_Wired_LTE_Backup_NAT.pdf"
       },
+      "ir1800|single|ethernet|dia|utd": {
+        state: "match",
+        title: "CVP_UTD",
+        description: "IR1800 with primary Ethernet, DIA, and Cisco Unified Threat Defense maps to the published CVP_UTD application catalog.<br><br><strong>Note:</strong> This catalog is only a Policy Group that forces UTD install on IR1835. It does not include the configuration group itself needed to provision the device. Please choose the appropriate group to go along with this Policy Group.",
+        tar: "./IR18xx/CVP_apps/CVP_UTD/IR1835-UTD-export-2025-12-04T16_28_40.tar.gz",
+        pdf: "./IR18xx/CVP_apps/CVP_UTD/CVP_UTD_IR1835_Policy_Group_with_UTD.pdf"
+      },
       "ir1800|single|ethernet|routed": {
         state: "match",
         title: "CVP2R",
@@ -832,8 +847,11 @@
       section.style.display = enabled ? "" : "none";
     }
 
+    const appUtdChoice = document.getElementById("app-utd-choice");
+
     function syncFlow() {
       const deployment = getValue("deployment");
+      const platform = getValue("platform");
       const lte = getValue("lte");
       const primary = getValue("primary");
       const mode = getValue("mode");
@@ -902,6 +920,14 @@
           appStep.classList.remove("hidden");
         } else {
           appStep.classList.add("hidden");
+          setRadioValue("app_profile", "none");
+        }
+      }
+
+      // UTD is only available for IR1800
+      if (appUtdChoice) {
+        appUtdChoice.style.display = platform === "ir1800" ? "" : "none";
+        if (platform !== "ir1800" && getValue("app_profile") === "utd") {
           setRadioValue("app_profile", "none");
         }
       }
