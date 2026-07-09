@@ -36,7 +36,7 @@
       <td>3</td>
       <td><a href="./IR1001/CVP8N">CVP8N</a> <a href="./IR1001/CVP8R">CVP8R</a> <a href="./IR1001/CVP8NX">CVP8NX</a></td>
       <td>IR1001-G2</td>
-      <td>26.1</td>
+      <td>26.2.1</td>
       <td>NA</td>
       <td>Single-router SD-WAN configurations for horizontal IR1001-G2 deployments: wired primary with LTE backup for DIA or routed traffic, plus LTE primary with wired backup for DIA.</td>
     </tr>
