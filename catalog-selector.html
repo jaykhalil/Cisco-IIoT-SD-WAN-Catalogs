@@ -683,32 +683,32 @@
       }
     };
 
-    // Values mirror the Catalyst SD-WAN Release column in CATALOGS.md.
+    // Values mirror the Minimum SD-WAN Release column in CATALOGS.md.
     const catalogReleases = {
-      CVP1N: "20.15.2+",
-      CVP1R: "20.15.2+",
-      CVP2N: "20.15.2+",
-      CVP2R: "20.15.2+",
-      CVP5: "20.15.2+",
-      CVP6: "20.15.2+",
-      CVP1NX: "20.15.2+",
-      CVP2NX: "20.15.2+",
-      CVP8N: "26.1+",
-      CVP8R: "26.1+",
-      CVP8NX: "26.1+",
-      CVP3NAA: "20.15.2+; IOS 17.18.1 / 17.15.4",
-      CVP3NAS: "20.15.2+; IOS 17.18.1 / 17.15.4",
-      CVP4NAA: "20.15.2+; IOS 17.18.1 / 17.15.4",
-      CVP4NAS: "20.15.2+; IOS 17.18.1 / 17.15.4",
-      CVP1N_SEA: "20.18.1+",
-      CVP2N_SEA: "20.18.1+",
-      CVP1N_TE: "20.18.2+",
-      CVP2N_TE: "20.18.2+",
-      CVP1N_TESEA: "20.18.2+",
-      CVP2N_TESEA: "20.18.2+",
-      CVP_UTD: "20.18.2+",
-      CVP5_CV: "20.18.2+",
-      CVP6_CV: "20.18.2+"
+      CVP1N: "20.15.2",
+      CVP1R: "20.15.2",
+      CVP2N: "20.15.2",
+      CVP2R: "20.15.2",
+      CVP5: "20.15.2",
+      CVP6: "20.15.2",
+      CVP1NX: "20.15.2",
+      CVP2NX: "20.15.2",
+      CVP8N: "26.1",
+      CVP8R: "26.1",
+      CVP8NX: "26.1",
+      CVP3NAA: "20.15.2; IOS 17.18.1 / 17.15.4",
+      CVP3NAS: "20.15.2; IOS 17.18.1 / 17.15.4",
+      CVP4NAA: "20.15.2; IOS 17.18.1 / 17.15.4",
+      CVP4NAS: "20.15.2; IOS 17.18.1 / 17.15.4",
+      CVP1N_SEA: "20.18.1",
+      CVP2N_SEA: "20.18.1",
+      CVP1N_TE: "20.18.2",
+      CVP2N_TE: "20.18.2",
+      CVP1N_TESEA: "20.18.2",
+      CVP2N_TESEA: "20.18.2",
+      CVP_UTD: "20.18.2",
+      CVP5_CV: "20.18.2",
+      CVP6_CV: "20.18.2"
     };
 
     const results = {
@@ -1074,7 +1074,7 @@
         <div class="eyebrow">Recommendation</div>
         <div class="recommendation-heading">
           <h2>${result.title}</h2>
-          ${release ? `<div class="release-badge">SD-WAN Release<strong>${release}</strong></div>` : ""}
+          ${release ? `<div class="release-badge">Minimum SD-WAN Release<strong>${release}</strong></div>` : ""}
         </div>
         <p>${result.description}</p>
         <div class="result-links">${buildLinks(result)}</div>

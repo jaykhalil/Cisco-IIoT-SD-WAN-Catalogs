@@ -10,7 +10,7 @@
       <th></th>
       <th width="16%">Cisco Validated Profile (CVP)</th>
       <th width="18%">Cisco IIoT Platforms</th>
-      <th width="20%">Catalyst SD-WAN Release</th>
+      <th width="20%">Minimum SD-WAN Release</th>
       <th width="10%">Applications Profiles</th>
       <th>Functional Description</th>
     </tr>
@@ -20,7 +20,7 @@
       <td>1</td>
       <td><a href="./IR1101/CVP1N">CVP1N</a> <a href="./IR1101/CVP1R">CVP1R</a></td>
       <td>IR1101</td>
-      <td>20.15.2+</td>
+      <td>20.15.2</td>
       <td>NA</td>
       <td>Single router SD-WAN configuration with wired and single LTE as last resort supporting single service VPN for for horizontal IR1101 deployments.</td>
     </tr>
@@ -28,7 +28,7 @@
       <td>2</td>
       <td><a href="./IR18xx/CVP2N">CVP2N</a> <a href="./IR18xx/CVP2R">CVP2R</a></td>
       <td>IR1800</td>
-      <td>20.15.2+</td>
+      <td>20.15.2</td>
       <td>NA</td>
       <td>Single router SD-WAN configuration with wired and single LTE as last resort supporting single service VPN for for horizontal IR1800 deployments.</td>
     </tr>
@@ -36,7 +36,7 @@
       <td>3</td>
       <td><a href="./IR1001/CVP8N">CVP8N</a> <a href="./IR1001/CVP8R">CVP8R</a> <a href="./IR1001/CVP8NX">CVP8NX</a></td>
       <td>IR1001-G2</td>
-      <td>26.1+</td>
+      <td>26.1</td>
       <td>NA</td>
       <td>Single-router SD-WAN configurations for horizontal IR1001-G2 deployments: wired primary with LTE backup for DIA or routed traffic, plus LTE primary with wired backup for DIA.</td>
     </tr>
@@ -44,7 +44,7 @@
       <td>4</td>
       <td><a href="./Roadways/CVP5">CVP5</a> <a href="./Roadways/CVP6">CVP6</a></td>
       <td>IR1101 & IR1835 Roadways</td>
-      <td>20.15.2+</td>
+      <td>20.15.2</td>
       <td>NA</td>
       <td>Single router SD-WAN configuration with wired and single LTE as last resort supporting multiple service VPN for Roadways deployments with ISE integration and LAN port authentication</td>
     </tr>   
@@ -52,7 +52,7 @@
       <td>5</td>
       <td><a href="./IR1101/CVP1NX">CVP1NX</a> <a href="./IR18xx/CVP2NX">CVP2NX</a></td>          
       <td>IR1101 & IR1800</td>
-      <td>20.15.2+</td>
+      <td>20.15.2</td>
       <td>NA</td>
       <td>Single router SD-WAN configuration with LTE and wired as last resort supporting single service VPN for for horizontal IR deployments. Reverse priority of CVP1N and CVP2N</td>
     </tr>
@@ -60,7 +60,7 @@
       <td>6</td>
       <td><a href="./IR1101/CVP3NAA">CVP3NAA</a> <a href="./IR1101/CVP3NAS">CVP3NAS</a></td>      
       <td>IR1101 Dual LTE <p>active/active &amp; </p> active/standby</td>
-      <td>20.15.2+ <br>
+      <td>20.15.2 <br>
           &amp; IOS 17.18.1/17.15.4
       </td>
       <td>NA</td>
@@ -70,7 +70,7 @@
       <td>7</td>
       <td><a href="./IR18xx/CVP4NAA">CVP4NAA</a> <a href="./IR18xx/CVP4NAS">CVP4NAS</a></td>      
       <td>IR1800 Dual LTE <p> active/active &amp; </p>  active/standby</td>
-      <td>20.15.2+ <br>
+      <td>20.15.2 <br>
           &amp; IOS 17.18.1/17.15.4
       </td>
       <td>NA</td>
@@ -80,7 +80,7 @@
       <td>8</td>
       <td><a href="./IR1101/CVP_apps/CVP1N_SEA">CVP1N_SEA</a> <a href="./IR18xx/CVP_apps/CVP2N_SEA">CVP2N_SEA</a></td>
       <td>IR1101 & IR1800</td>
-      <td>20.18.1+</td>
+      <td>20.18.1</td>
       <td>SEA</td>
       <td>Same as CVP1N/CVP2N with Cisco Secure Equipment Access agent deployment included.</td>
     </tr>
@@ -88,7 +88,7 @@
       <td>9</td>
       <td><a href="./IR1101/CVP_apps/CVP1N_TE">CVP1N_TE</a> <a href="./IR18xx/CVP_apps/CVP2N_TE">CVP2N_TE</a></td>
       <td>IR1101 & IR1800</td>
-      <td>20.18.2+</td>
+      <td>20.18.2</td>
       <td>ThousandEyes</td>
       <td>Same as CVP1N/CVP2N with ThousandEyes agent deployment included.</td>
     </tr>
@@ -96,7 +96,7 @@
       <td>10</td>
       <td><a href="./IR1101/CVP_apps/CVP1N_TESEA">CVP1N_TESEA</a> <a href="./IR18xx/CVP_apps/CVP2N_TESEA">CVP2N_TESEA</a></td>
       <td>IR1101 & IR1800</td>
-      <td>20.18.2+</td>
+      <td>20.18.2</td>
       <td>ThousandEyes & SEA</td>
       <td>Same as CVP1N/CVP2N with ThousandEyes and Secure Equipment agents deployment included.</td>
     </tr>
@@ -104,7 +104,7 @@
       <td>11</td>
       <td><a href="./IR18xx/CVP_apps/CVP_UTD">CVP_UTD</a></td>
       <td>IR1835 (Policy Group Only)</td>
-      <td>20.18.2+</td>
+      <td>20.18.2</td>
       <td>UTD</td>
       <td>IR1835 Roadways Sample Policy Group export that enables installation of UTD and creates sample NGFW activating UTD features.</td>
     </tr>
@@ -112,7 +112,7 @@
       <td>12</td>
       <td><a href="./Roadways/CVP5CV">CVP5_CV</a> <a href="./Roadways/CVP6CV">CVP6_CV</a></td>
       <td>IR1101 & IR1835 Roadways with Cyber Vision</td>
-      <td>20.18.2+</td>
+      <td>20.18.2</td>
       <td>Cyber Vision</td>
       <td>Single router SD-WAN configuration with wired and single LTE as last resort supporting multiple service VPN for Roadways deployments with ISE integration and LAN port authentication. Also includes a profile to deploy a Cyber Vision sensor in IOX</td>
     </tr>
