@@ -34,6 +34,14 @@
     </tr>
     <tr>
       <td>3</td>
+      <td><a href="./IR1001/CVP8N">CVP8N</a> <a href="./IR1001/CVP8R">CVP8R</a> <a href="./IR1001/CVP8NX">CVP8NX</a></td>
+      <td>IR1001-G2</td>
+      <td>26.1+</td>
+      <td>NA</td>
+      <td>Single-router SD-WAN configurations for horizontal IR1001-G2 deployments: wired primary with LTE backup for DIA or routed traffic, plus LTE primary with wired backup for DIA.</td>
+    </tr>
+    <tr>
+      <td>4</td>
       <td><a href="./Roadways/CVP5">CVP5</a> <a href="./Roadways/CVP6">CVP6</a></td>
       <td>IR1101 & IR1835 Roadways</td>
       <td>20.15.2+</td>
@@ -41,7 +49,7 @@
       <td>Single router SD-WAN configuration with wired and single LTE as last resort supporting multiple service VPN for Roadways deployments with ISE integration and LAN port authentication</td>
     </tr>   
     <tr>
-      <td>4</td>
+      <td>5</td>
       <td><a href="./IR1101/CVP1NX">CVP1NX</a> <a href="./IR18xx/CVP2NX">CVP2NX</a></td>          
       <td>IR1101 & IR1800</td>
       <td>20.15.2+</td>
@@ -49,7 +57,7 @@
       <td>Single router SD-WAN configuration with LTE and wired as last resort supporting single service VPN for for horizontal IR deployments. Reverse priority of CVP1N and CVP2N</td>
     </tr>
     <tr>
-      <td>5</td>
+      <td>6</td>
       <td><a href="./IR1101/CVP3NAA">CVP3NAA</a> <a href="./IR1101/CVP3NAS">CVP3NAS</a></td>      
       <td>IR1101 Dual LTE <p>active/active &amp; </p> active/standby</td>
       <td>20.15.2+ <br>
@@ -59,7 +67,7 @@
       <td>Single router SD-WAN configuration with wired and dual LTE in both active/active and active/standby modes, supporting single service VPN for for horizontal IR deployments.</td>
     </tr>
     <tr>
-      <td>6</td>
+      <td>7</td>
       <td><a href="./IR18xx/CVP4NAA">CVP4NAA</a> <a href="./IR18xx/CVP4NAS">CVP4NAS</a></td>      
       <td>IR1800 Dual LTE <p> active/active &amp; </p>  active/standby</td>
       <td>20.15.2+ <br>
@@ -69,7 +77,7 @@
       <td>Single router SD-WAN configuration with wired and dual LTE in both active/active and active/standby modes, supporting single service VPN for for horizontal IR deployments.</td>
     </tr>    
     <tr>
-      <td>7</td>
+      <td>8</td>
       <td><a href="./IR1101/CVP_apps/CVP1N_SEA">CVP1N_SEA</a> <a href="./IR18xx/CVP_apps/CVP2N_SEA">CVP2N_SEA</a></td>
       <td>IR1101 & IR1800</td>
       <td>20.18.1+</td>
@@ -77,7 +85,7 @@
       <td>Same as CVP1N/CVP2N with Cisco Secure Equipment Access agent deployment included.</td>
     </tr>
     <tr>
-      <td>8</td>
+      <td>9</td>
       <td><a href="./IR1101/CVP_apps/CVP1N_TE">CVP1N_TE</a> <a href="./IR18xx/CVP_apps/CVP2N_TE">CVP2N_TE</a></td>
       <td>IR1101 & IR1800</td>
       <td>20.18.2+</td>
@@ -85,7 +93,7 @@
       <td>Same as CVP1N/CVP2N with ThousandEyes agent deployment included.</td>
     </tr>
     <tr>
-      <td>9</td>
+      <td>10</td>
       <td><a href="./IR1101/CVP_apps/CVP1N_TESEA">CVP1N_TESEA</a> <a href="./IR18xx/CVP_apps/CVP2N_TESEA">CVP2N_TESEA</a></td>
       <td>IR1101 & IR1800</td>
       <td>20.18.2+</td>
@@ -93,7 +101,7 @@
       <td>Same as CVP1N/CVP2N with ThousandEyes and Secure Equipment agents deployment included.</td>
     </tr>
     <tr>
-      <td>10</td>
+      <td>11</td>
       <td><a href="./IR18xx/CVP_apps/CVP_UTD">CVP_UTD</a></td>
       <td>IR1835 (Policy Group Only)</td>
       <td>20.18.2+</td>
@@ -101,7 +109,7 @@
       <td>IR1835 Roadways Sample Policy Group export that enables installation of UTD and creates sample NGFW activating UTD features.</td>
     </tr>
     <tr>
-      <td>11</td>
+      <td>12</td>
       <td><a href="./Roadways/CVP5CV">CVP5_CV</a> <a href="./Roadways/CVP6CV">CVP6_CV</a></td>
       <td>IR1101 & IR1835 Roadways with Cyber Vision</td>
       <td>20.18.2+</td>
@@ -109,7 +117,7 @@
       <td>Single router SD-WAN configuration with wired and single LTE as last resort supporting multiple service VPN for Roadways deployments with ISE integration and LAN port authentication. Also includes a profile to deploy a Cyber Vision sensor in IOX</td>
     </tr>
     <tr>
-      <td>12</td>
+      <td>13</td>
       <td>CVP6_CVSEA CVP6_CVTE</td>
       <td width="18%">IR1835 <p> Roadways (CV&SEA)</p> Roadways (CV&TE)</td>
       <td>Coming Soon</td>
@@ -117,7 +125,7 @@
       <td>IR1835 Roadways catalog with combined applications, Cyber Vision & Secure Equipment Access or Cyber Vision & ThousandEyes.</td>
     </tr>
     <tr>
-      <td>13</td>
+      <td>14</td>
       <td>CVP7R</td>
       <td>IR8340</td>
       <td>Coming Soon</td>

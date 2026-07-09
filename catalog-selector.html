@@ -271,9 +271,35 @@
       text-transform: uppercase;
     }
 
-    .result-card h2 {
+    .recommendation-heading {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
       margin: 0 0 8px;
+    }
+
+    .result-card h2 {
+      margin: 0;
       font-size: 1.55rem;
+    }
+
+    .release-badge {
+      flex: 0 0 auto;
+      padding: 5px 8px;
+      border: 1px solid rgba(16, 36, 62, 0.16);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.56);
+      color: var(--muted);
+      font-size: 0.72rem;
+      line-height: 1.25;
+      text-align: right;
+    }
+
+    .release-badge strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.82rem;
     }
 
     .result-card p {
@@ -337,7 +363,7 @@
     <section class="layout">
       <div class="panel">
         <h2 class="section-title">Selection Flow</h2>
-        <p class="section-copy">This flow is constrained to published IR1101 and IR1800 catalogs.</p>
+        <p class="section-copy">This flow is constrained to published IR1101, IR1800, and IR1001-G2 catalogs.</p>
 
         <div class="step-list">
           <section id="deployment-step" class="step">
@@ -427,6 +453,13 @@
                 <label for="platform-ir1800">
                   <strong>IR1800</strong>
                   <span>Higher-scale industrial router family for broader site needs.</span>
+                </label>
+              </div>
+              <div class="choice">
+                <input id="platform-ir1001-g2" type="radio" name="platform" value="ir1001-g2">
+                <label for="platform-ir1001-g2">
+                  <strong>IR1001-G2</strong>
+                  <span>Second-generation compact industrial router with three published single-LTE catalog paths.</span>
                 </label>
               </div>
             </div>
@@ -622,7 +655,8 @@
       },
       platform: {
         ir1101: "IR1101",
-        ir1800: "IR1800"
+        ir1800: "IR1800",
+        "ir1001-g2": "IR1001-G2"
       },
       lte: {
         single: "Single LTE",
@@ -647,6 +681,34 @@
         active_active: "Active/Active",
         active_standby: "Active/Standby"
       }
+    };
+
+    // Values mirror the Catalyst SD-WAN Release column in CATALOGS.md.
+    const catalogReleases = {
+      CVP1N: "20.15.2+",
+      CVP1R: "20.15.2+",
+      CVP2N: "20.15.2+",
+      CVP2R: "20.15.2+",
+      CVP5: "20.15.2+",
+      CVP6: "20.15.2+",
+      CVP1NX: "20.15.2+",
+      CVP2NX: "20.15.2+",
+      CVP8N: "26.1+",
+      CVP8R: "26.1+",
+      CVP8NX: "26.1+",
+      CVP3NAA: "20.15.2+; IOS 17.18.1 / 17.15.4",
+      CVP3NAS: "20.15.2+; IOS 17.18.1 / 17.15.4",
+      CVP4NAA: "20.15.2+; IOS 17.18.1 / 17.15.4",
+      CVP4NAS: "20.15.2+; IOS 17.18.1 / 17.15.4",
+      CVP1N_SEA: "20.18.1+",
+      CVP2N_SEA: "20.18.1+",
+      CVP1N_TE: "20.18.2+",
+      CVP2N_TE: "20.18.2+",
+      CVP1N_TESEA: "20.18.2+",
+      CVP2N_TESEA: "20.18.2+",
+      CVP_UTD: "20.18.2+",
+      CVP5_CV: "20.18.2+",
+      CVP6_CV: "20.18.2+"
     };
 
     const results = {
@@ -805,6 +867,27 @@
         description: "IR1800 dual-LTE active/standby deployments map directly to the published CVP4NAS catalog.",
         tar: "./IR18xx/CVP4NAS/CVP4NAS-export-2025-08-05T17_55_12.tar.gz",
         pdf: "./IR18xx/CVP4NAS/CVP4NAS_IR1800_Dual_LTE_Active_Stdby.pdf"
+      },
+      "ir1001-g2|single|ethernet|dia|none": {
+        state: "match",
+        title: "CVP8N",
+        description: "IR1001-G2 with primary Ethernet and DIA maps to the published NAT catalog with wired primary and LTE backup.",
+        tar: "./IR1001/CVP8N/CVP8N-export-2026-07-09T14_27_23.tar.gz",
+        pdf: "./IR1001/CVP8N/CVP8N_IR1001_Wired_LTE_Backup_NAT.pdf"
+      },
+      "ir1001-g2|single|ethernet|routed": {
+        state: "match",
+        title: "CVP8R",
+        description: "IR1001-G2 with primary Ethernet and traffic routed to the enterprise maps to the published routed catalog with wired primary and LTE backup.",
+        tar: "./IR1001/CVP8R/CVP8R-export-2026-07-09T14_27_47.tar.gz",
+        pdf: "./IR1001/CVP8R/CVP8R_IR1001_Wired_LTE_Backup_Routed.pdf"
+      },
+      "ir1001-g2|single|cellular|dia": {
+        state: "match",
+        title: "CVP8NX",
+        description: "IR1001-G2 with primary Cellular and DIA maps to the published NAT catalog with LTE primary and wired backup.",
+        tar: "./IR1001/CVP8NX/CVP8NX-export-2026-07-09T15_26_40.tar.gz",
+        pdf: "./IR1001/CVP8NX/CVP8NX_IR1001_LTE_Wired_Backup_NAT.pdf"
       }
     };
 
@@ -852,6 +935,11 @@
     function syncFlow() {
       const deployment = getValue("deployment");
       const platform = getValue("platform");
+      const isIr1001G2 = platform === "ir1001-g2";
+      if (isIr1001G2) {
+        setRadioValue("lte", "single");
+        setRadioValue("app_profile", "none");
+      }
       const lte = getValue("lte");
       const primary = getValue("primary");
       const mode = getValue("mode");
@@ -885,12 +973,12 @@
       roadwaysStep.classList.add("hidden");
       roadwaysCvStep.classList.add("hidden");
       platformStep.classList.remove("hidden");
-      setSectionEnabled(lteStep, true);
+      setSectionEnabled(lteStep, !isIr1001G2);
       setSectionEnabled(singleLteStep, true);
       setSectionEnabled(singleModeStep, true);
       setSectionEnabled(appStep, true);
       setSectionEnabled(dualModeStep, true);
-      lteStep.classList.remove("hidden");
+      lteStep.classList.toggle("hidden", isIr1001G2);
 
       if (lte === "dual") {
         singleLteStep.classList.add("hidden");
@@ -916,7 +1004,7 @@
           document.querySelector('label[for="mode-routed"]').style.cursor = "pointer";
         }
 
-        if (primary === "ethernet" && mode === "dia") {
+        if (!isIr1001G2 && primary === "ethernet" && mode === "dia") {
           appStep.classList.remove("hidden");
         } else {
           appStep.classList.add("hidden");
@@ -965,6 +1053,7 @@
             ? `${platform}|${lte}|${primary}|${mode}|${appProfile}`
             : `${platform}|${lte}|${primary}|${mode}`));
       const result = results[key];
+      const release = catalogReleases[result.title] || null;
 
       selectors.deployment.textContent = labels.deployment[deployment];
       selectors.roadwaysPlatform.textContent = deployment === "roadways" ? labels.roadwaysPlatform[roadwaysPlatform] : "Not Used";
@@ -983,7 +1072,10 @@
       resultCard.className = `result-card ${result.state}`;
       resultCard.innerHTML = `
         <div class="eyebrow">Recommendation</div>
-        <h2>${result.title}</h2>
+        <div class="recommendation-heading">
+          <h2>${result.title}</h2>
+          ${release ? `<div class="release-badge">SD-WAN Release<strong>${release}</strong></div>` : ""}
+        </div>
         <p>${result.description}</p>
         <div class="result-links">${buildLinks(result)}</div>
       `;
