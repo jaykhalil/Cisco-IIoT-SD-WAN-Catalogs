@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cisco IIoT SD-WAN Catalog Selector</title>
+  <title>Cisco IIoT Catalog Selector</title>
   <style>
     :root {
       --bg: #eef3f8;
@@ -119,6 +119,11 @@
       border: 1px solid var(--border);
       border-radius: 18px;
       background: #fbfdff;
+    }
+
+    #solution-step {
+      border-color: #9fcce9;
+      background: linear-gradient(135deg, #f2f8fd, #ffffff);
     }
 
     .step-header {
@@ -282,6 +287,7 @@
     .result-card h2 {
       margin: 0;
       font-size: 1.55rem;
+      overflow-wrap: anywhere;
     }
 
     .release-badge {
@@ -343,6 +349,10 @@
       margin-top: 8px;
     }
 
+    .notes.hidden {
+      display: none;
+    }
+
     @media (max-width: 900px) {
       .layout {
         grid-template-columns: 1fr;
@@ -356,19 +366,42 @@
       <div class="hero-top">
         <a class="top-link" href="./">Back to Home</a>
       </div>
-      <h1>SD-WAN Industrial Routers Catalog Selector</h1>
-      <p>Choose whether the use case is Roadways or Horizontal Use, then follow the guided path. The selector only shows branches for which a catalog exists.</p>
+      <h1>Industrial Router Catalog Selector</h1>
+      <p>Choose Catalyst SD-WAN or Catalyst SD-Routing, then follow the available catalog path for your deployment.</p>
     </section>
 
     <section class="layout">
       <div class="panel">
         <h2 class="section-title">Selection Flow</h2>
-        <p class="section-copy">This flow is constrained to published IR1101, IR1800, and IR1001-G2 catalogs.</p>
+        <p class="section-copy">Choose a catalog family first. SD-WAN keeps the full catalog flow; SD-Routing currently offers one IR1101 profile.</p>
 
         <div class="step-list">
-          <section id="deployment-step" class="step">
+          <section id="solution-step" class="step">
             <div class="step-header">
               <div class="step-number">1</div>
+              <h3>Choose the catalog family</h3>
+            </div>
+            <div class="choices">
+              <div class="choice">
+                <input id="solution-sdwan" type="radio" name="solution" value="sdwan" checked>
+                <label for="solution-sdwan">
+                  <strong>Catalyst SD-WAN</strong>
+                  <span>Use centralized SD-WAN policy, orchestration, and the existing validated catalog paths.</span>
+                </label>
+              </div>
+              <div class="choice">
+                <input id="solution-sd-routing" type="radio" name="solution" value="sd_routing">
+                <label for="solution-sd-routing">
+                  <strong>Catalyst SD-Routing</strong>
+                  <span>Use a simplified routed deployment without the SD-WAN overlay.</span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <section id="deployment-step" class="step">
+            <div class="step-header">
+              <div class="step-number">2</div>
               <h3>Choose the use case</h3>
             </div>
             <div class="choices">
@@ -391,7 +424,7 @@
 
           <section id="roadways-step" class="step hidden">
             <div class="step-header">
-              <div class="step-number">2</div>
+              <div class="step-number">3</div>
               <h3>Choose the roadway platform</h3>
             </div>
             <div class="choices">
@@ -414,7 +447,7 @@
 
           <section id="roadways-cv-step" class="step hidden">
             <div class="step-header">
-              <div class="step-number">3</div>
+              <div class="step-number">4</div>
               <h3>Choose Cyber Vision</h3>
             </div>
             <div class="choices">
@@ -437,7 +470,7 @@
 
           <section id="platform-step" class="step">
             <div class="step-header">
-              <div class="step-number">2</div>
+              <div class="step-number">3</div>
               <h3>Choose the platform</h3>
             </div>
             <div class="choices">
@@ -467,7 +500,7 @@
 
           <section id="lte-step" class="step">
             <div class="step-header">
-              <div class="step-number">2</div>
+              <div class="step-number">4</div>
               <h3>Choose the LTE design</h3>
             </div>
             <div class="choices">
@@ -490,7 +523,7 @@
 
           <section id="single-lte-step" class="step">
             <div class="step-header">
-              <div class="step-number">3</div>
+              <div class="step-number">5</div>
               <h3>Choose the preferred primary WAN</h3>
             </div>
             <div class="choices">
@@ -513,7 +546,7 @@
 
           <section id="single-mode-step" class="step">
             <div class="step-header">
-              <div class="step-number">4</div>
+              <div class="step-number">6</div>
               <h3>Choose the traffic model</h3>
             </div>
             <div class="choices">
@@ -536,7 +569,7 @@
 
           <section id="app-step" class="step hidden">
             <div class="step-header">
-              <div class="step-number">5</div>
+              <div class="step-number">7</div>
               <h3>Choose application add-ons</h3>
             </div>
             <div class="choices">
@@ -580,7 +613,7 @@
 
           <section id="dual-mode-step" class="step hidden">
             <div class="step-header">
-              <div class="step-number">3</div>
+              <div class="step-number">5</div>
               <h3>Choose the dual-LTE operating mode</h3>
             </div>
             <div class="choices">
@@ -600,13 +633,33 @@
               </div>
             </div>
           </section>
+
+          <section id="sd-routing-step" class="step hidden">
+            <div class="step-header">
+              <div class="step-number">2</div>
+              <h3>Available SD-Routing catalog</h3>
+            </div>
+            <div class="choices">
+              <div class="choice">
+                <input id="sd-routing-ir1101" type="radio" name="sd_routing_profile" value="ir1101_cvp1n" checked>
+                <label for="sd-routing-ir1101">
+                  <strong>CVP1N_SDR</strong>
+                  <span>DIA / NAT with single LTE backup—the SD-Routing equivalent of CVP1N.</span>
+                </label>
+              </div>
+            </div>
+          </section>
         </div>
 
-        <ul class="notes">
+        <ul id="sdwan-notes" class="notes">
           <li>`N` catalogs are NAT / DIA oriented.</li>
           <li>`R` catalogs are routed to an enterprise hub.</li>
           <li>`NX` catalogs keep the NAT / DIA model but reverse the WAN preference so LTE is primary.</li>
           <li>Dual-LTE catalogs are their own branch and do not expose the single-LTE routed/cellular permutations.</li>
+        </ul>
+        <ul id="sd-routing-notes" class="notes hidden">
+          <li>SD-Routing currently supports one IR1101 catalog path equivalent to the CVP1N SD-WAN design.</li>
+          <li>The catalog guide can be connected here when its file is added.</li>
         </ul>
       </div>
 
@@ -614,6 +667,7 @@
         <section class="panel summary-box">
           <h3>Current Selection</h3>
           <ul class="selection-list">
+            <li><strong>Catalog Family</strong> <span id="selection-solution">Catalyst SD-WAN</span></li>
             <li><strong>Use Case</strong> <span id="selection-deployment">Not Roadways</span></li>
             <li><strong>Roadways Platform</strong> <span id="selection-roadways-platform">Not Used</span></li>
             <li><strong>Cyber Vision</strong> <span id="selection-roadways-cv">Not Used</span></li>
@@ -641,6 +695,10 @@
 
   <script>
     const labels = {
+      solution: {
+        sdwan: "Catalyst SD-WAN",
+        sd_routing: "Catalyst SD-Routing"
+      },
       deployment: {
         standard: "Horizontal Use",
         roadways: "Roadways"
@@ -686,6 +744,7 @@
     // Values mirror the Minimum SD-WAN Release column in CATALOGS.md.
     const catalogReleases = {
       CVP1N: "20.15.2",
+      CVP1N_SDR: "20.18",
       CVP1R: "20.15.2",
       CVP2N: "20.15.2",
       CVP2R: "20.15.2",
@@ -712,6 +771,14 @@
     };
 
     const results = {
+      "sd_routing|ir1101_cvp1n": {
+        state: "match",
+        title: "CVP1N_SDR",
+        description: "IR1101 SD-Routing catalog with primary Ethernet, single LTE backup, and DIA / NAT. This is the SD-Routing equivalent of the CVP1N SD-WAN design.",
+        links: [
+          { href: "./IR1101/CVP1N_SDR/CVP1N-export-2026-09-22T19_49_32.tar.gz", label: "Download Catalog", secondary: false, download: true }
+        ]
+      },
       "roadways|ir1101|base": {
         state: "match",
         title: "CVP5",
@@ -892,6 +959,7 @@
     };
 
     const selectors = {
+      solution: document.getElementById("selection-solution"),
       deployment: document.getElementById("selection-deployment"),
       roadwaysPlatform: document.getElementById("selection-roadways-platform"),
       roadwaysCv: document.getElementById("selection-roadways-cv"),
@@ -904,6 +972,7 @@
     };
 
     const resultCard = document.getElementById("result-card");
+    const solutionStep = document.getElementById("solution-step");
     const deploymentStep = document.getElementById("deployment-step");
     const roadwaysStep = document.getElementById("roadways-step");
     const roadwaysCvStep = document.getElementById("roadways-cv-step");
@@ -913,6 +982,9 @@
     const singleModeStep = document.getElementById("single-mode-step");
     const appStep = document.getElementById("app-step");
     const dualModeStep = document.getElementById("dual-mode-step");
+    const sdRoutingStep = document.getElementById("sd-routing-step");
+    const sdwanNotes = document.getElementById("sdwan-notes");
+    const sdRoutingNotes = document.getElementById("sd-routing-notes");
 
     function getValue(name) {
       return document.querySelector(`input[name="${name}"]:checked`).value;
@@ -933,6 +1005,7 @@
     const appUtdChoice = document.getElementById("app-utd-choice");
 
     function syncFlow() {
+      const solution = getValue("solution");
       const deployment = getValue("deployment");
       const platform = getValue("platform");
       const isIr1001G2 = platform === "ir1001-g2";
@@ -944,13 +1017,35 @@
       const primary = getValue("primary");
       const mode = getValue("mode");
 
+      solutionStep.classList.remove("hidden");
+      setSectionEnabled(solutionStep, true);
+
+      if (solution === "sd_routing") {
+        [deploymentStep, roadwaysStep, roadwaysCvStep, platformStep, lteStep, singleLteStep, singleModeStep, appStep, dualModeStep].forEach((section) => {
+          section.classList.add("hidden");
+          setSectionEnabled(section, false);
+        });
+        sdRoutingStep.classList.remove("hidden");
+        setSectionEnabled(sdRoutingStep, true);
+        sdwanNotes.classList.add("hidden");
+        sdRoutingNotes.classList.remove("hidden");
+        return;
+      }
+
+      sdRoutingStep.classList.add("hidden");
+      setSectionEnabled(sdRoutingStep, false);
+      sdwanNotes.classList.remove("hidden");
+      sdRoutingNotes.classList.add("hidden");
       deploymentStep.classList.remove("hidden");
       setSectionEnabled(deploymentStep, true);
 
       if (deployment === "roadways") {
         roadwaysStep.classList.remove("hidden");
         roadwaysCvStep.classList.remove("hidden");
+        setSectionEnabled(roadwaysStep, true);
+        setSectionEnabled(roadwaysCvStep, true);
         platformStep.classList.add("hidden");
+        setSectionEnabled(platformStep, false);
         lteStep.classList.add("hidden");
         singleLteStep.classList.add("hidden");
         singleModeStep.classList.add("hidden");
@@ -972,13 +1067,18 @@
 
       roadwaysStep.classList.add("hidden");
       roadwaysCvStep.classList.add("hidden");
+      setSectionEnabled(roadwaysStep, false);
+      setSectionEnabled(roadwaysCvStep, false);
       platformStep.classList.remove("hidden");
+      setSectionEnabled(platformStep, true);
       setSectionEnabled(lteStep, !isIr1001G2);
       setSectionEnabled(singleLteStep, true);
       setSectionEnabled(singleModeStep, true);
       setSectionEnabled(appStep, true);
       setSectionEnabled(dualModeStep, true);
       lteStep.classList.toggle("hidden", isIr1001G2);
+      singleLteStep.querySelector(".step-number").textContent = isIr1001G2 ? "4" : "5";
+      singleModeStep.querySelector(".step-number").textContent = isIr1001G2 ? "5" : "6";
 
       if (lte === "dual") {
         singleLteStep.classList.add("hidden");
@@ -1025,7 +1125,8 @@
       if (result.links) {
         return result.links.map((link) => {
           const buttonClass = link.secondary ? "button secondary" : "button";
-          return `<a class="${buttonClass}" href="${link.href}">${link.label}</a>`;
+          const downloadAttribute = link.download ? " download" : "";
+          return `<a class="${buttonClass}" href="${link.href}"${downloadAttribute}>${link.label}</a>`;
         }).join("");
       }
 
@@ -1036,6 +1137,7 @@
     }
 
     function render() {
+      const solution = getValue("solution");
       const deployment = getValue("deployment");
       const roadwaysPlatform = getValue("roadways_platform");
       const roadwaysCv = getValue("roadways_cv");
@@ -1045,7 +1147,10 @@
       const mode = getValue("mode");
       const appProfile = getValue("app_profile");
       const dualMode = getValue("dual_mode");
-      const key = deployment === "roadways"
+      const sdRoutingProfile = getValue("sd_routing_profile");
+      const key = solution === "sd_routing"
+        ? `${solution}|${sdRoutingProfile}`
+        : deployment === "roadways"
         ? `${deployment}|${roadwaysPlatform}|${roadwaysCv}`
         : (lte === "dual"
           ? `${platform}|${lte}|${dualMode}`
@@ -1055,19 +1160,30 @@
       const result = results[key];
       const release = catalogReleases[result.title] || null;
 
-      selectors.deployment.textContent = labels.deployment[deployment];
-      selectors.roadwaysPlatform.textContent = deployment === "roadways" ? labels.roadwaysPlatform[roadwaysPlatform] : "Not Used";
-      selectors.roadwaysCv.textContent = deployment === "roadways" ? labels.roadwaysCv[roadwaysCv] : "Not Used";
-      selectors.platform.textContent = labels.platform[platform];
-      selectors.lte.textContent = labels.lte[lte];
-      selectors.platform.textContent = deployment === "roadways" ? "Not Used" : labels.platform[platform];
-      selectors.lte.textContent = deployment === "roadways" ? "Not Used" : labels.lte[lte];
-      selectors.primary.textContent = (deployment === "roadways" || lte === "dual") ? "Not Used" : labels.primary[primary];
-      selectors.mode.textContent = (deployment === "roadways" || lte === "dual") ? "Not Used" : labels.mode[mode];
-      selectors.app.textContent = (deployment === "standard" && lte === "single" && primary === "ethernet" && mode === "dia")
-        ? labels.app[appProfile]
-        : "Not Used";
-      selectors.dualMode.textContent = (deployment === "standard" && lte === "dual") ? labels.dualMode[dualMode] : "Not Used";
+      selectors.solution.textContent = labels.solution[solution];
+      if (solution === "sd_routing") {
+        selectors.deployment.textContent = "Horizontal Use";
+        selectors.roadwaysPlatform.textContent = "Not Used";
+        selectors.roadwaysCv.textContent = "Not Used";
+        selectors.platform.textContent = "IR1101";
+        selectors.lte.textContent = "Single LTE";
+        selectors.primary.textContent = "Ethernet";
+        selectors.mode.textContent = "DIA / NAT";
+        selectors.app.textContent = "None";
+        selectors.dualMode.textContent = "Not Used";
+      } else {
+        selectors.deployment.textContent = labels.deployment[deployment];
+        selectors.roadwaysPlatform.textContent = deployment === "roadways" ? labels.roadwaysPlatform[roadwaysPlatform] : "Not Used";
+        selectors.roadwaysCv.textContent = deployment === "roadways" ? labels.roadwaysCv[roadwaysCv] : "Not Used";
+        selectors.platform.textContent = deployment === "roadways" ? "Not Used" : labels.platform[platform];
+        selectors.lte.textContent = deployment === "roadways" ? "Not Used" : labels.lte[lte];
+        selectors.primary.textContent = (deployment === "roadways" || lte === "dual") ? "Not Used" : labels.primary[primary];
+        selectors.mode.textContent = (deployment === "roadways" || lte === "dual") ? "Not Used" : labels.mode[mode];
+        selectors.app.textContent = (deployment === "standard" && lte === "single" && primary === "ethernet" && mode === "dia")
+          ? labels.app[appProfile]
+          : "Not Used";
+        selectors.dualMode.textContent = (deployment === "standard" && lte === "dual") ? labels.dualMode[dualMode] : "Not Used";
+      }
 
       resultCard.className = `result-card ${result.state}`;
       resultCard.innerHTML = `

@@ -10,7 +10,7 @@
   <tr>
     <td>
       <h3>Need help choosing a catalog?</h3>
-      <p>Use the interactive selector to map your router family, preferred primary WAN, and traffic model to the closest published Cisco IIoT SD-WAN catalog in this repository.</p>
+      <p>Use the interactive selector to choose Catalyst SD-WAN or Catalyst SD-Routing and map your deployment to the closest published Cisco IIoT catalog in this repository.</p>
       <p>
         <a href="./catalog-selector.html" style="display:inline-block;padding:14px 20px;border-radius:12px;background:#0b84d8;color:#ffffff;text-decoration:none;font-size:1.08rem;font-weight:700;box-shadow:0 8px 20px rgba(11,132,216,0.22);">
           Open the Catalog Selector
@@ -20,7 +20,7 @@
   </tr>
 </table>
 
-<p> Once a catalog is imported as a Configuration Group, that group can then be modified further, prior to attaching and deploying on edge devices. Catalogs come with certain global values pre-configured to ease deployment, such as interface names, cellular timer optimizations to reduce cellular data usage, pre-defined service VPNs and other services such as NTP, DNS, DHCP, and Logging. Each catalog also comes with a PDF file that explains in more detail the functionality of the catalog. Below is an example of where to import the catalog tar file in Cisco SD-WAN. </p>
+<p> Once a catalog is imported as a Configuration Group, that group can then be modified further, prior to attaching and deploying on edge devices. Catalogs come with certain global values pre-configured to ease deployment, such as interface names, cellular timer optimizations to reduce cellular data usage, pre-defined service VPNs and other services such as NTP, DNS, DHCP, and Logging. Catalog guides are included when available and explain the functionality in more detail. Below is an example of where to import the catalog tar file in Cisco SD-WAN. </p>
 
 ![Catalog import screenshot](./metadata/cg-import.png)
 
