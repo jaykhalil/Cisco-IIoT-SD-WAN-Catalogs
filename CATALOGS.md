@@ -28,7 +28,7 @@
       <td>2</td>
       <td><a href="./IR1101/CVP1N_SDR">CVP1N_SDR</a></td>
       <td>IR1101</td>
-      <td>20.18</td>
+      <td>20.18.1a</td>
       <td>NA</td>
       <td>Single-router SD-Routing configuration with wired primary, single LTE backup, and DIA / NAT for horizontal IR1101 deployments.</td>
     </tr>
