@@ -373,7 +373,7 @@
     <section class="layout">
       <div class="panel">
         <h2 class="section-title">Selection Flow</h2>
-        <p class="section-copy">Choose a catalog family first. SD-WAN keeps the full catalog flow; SD-Routing currently offers one IR1101 profile.</p>
+        <p class="section-copy">Choose a catalog family first, then follow the guided hardware and design selections. SD-Routing skips the use-case step and highlights published matches as they become available.</p>
 
         <div class="step-list">
           <section id="solution-step" class="step">
@@ -634,21 +634,6 @@
             </div>
           </section>
 
-          <section id="sd-routing-step" class="step hidden">
-            <div class="step-header">
-              <div class="step-number">2</div>
-              <h3>Available SD-Routing catalog</h3>
-            </div>
-            <div class="choices">
-              <div class="choice">
-                <input id="sd-routing-ir1101" type="radio" name="sd_routing_profile" value="ir1101_cvp1n" checked>
-                <label for="sd-routing-ir1101">
-                  <strong>CVP1N_SDR</strong>
-                  <span>DIA / NAT with single LTE backup—the SD-Routing equivalent of CVP1N.</span>
-                </label>
-              </div>
-            </div>
-          </section>
         </div>
 
         <ul id="sdwan-notes" class="notes">
@@ -658,8 +643,8 @@
           <li>Dual-LTE catalogs are their own branch and do not expose the single-LTE routed/cellular permutations.</li>
         </ul>
         <ul id="sd-routing-notes" class="notes hidden">
-          <li>SD-Routing currently supports one IR1101 catalog path equivalent to the CVP1N SD-WAN design.</li>
-          <li>The catalog guide is available from the recommendation after selecting CVP1N_SDR.</li>
+          <li>All hardware and design options remain selectable so new SD-Routing catalogs can be added to this flow.</li>
+          <li>The currently published match is CVP1N_SDR for IR1101 with single LTE, Ethernet primary, DIA / NAT, and no application add-on.</li>
         </ul>
       </div>
 
@@ -771,7 +756,7 @@
     };
 
     const results = {
-      "sd_routing|ir1101_cvp1n": {
+      "sd_routing|ir1101|single|ethernet|dia|none": {
         state: "match",
         title: "CVP1N_SDR",
         description: "IR1101 SD-Routing catalog with primary Ethernet, single LTE backup, and DIA / NAT. This is the SD-Routing equivalent of the CVP1N SD-WAN design.",
@@ -959,6 +944,13 @@
       }
     };
 
+    const sdRoutingNoMatch = {
+      state: "warning",
+      title: "No Exact Match Published",
+      description: "There is no published SD-Routing catalog for this selection yet. The currently available SD-Routing catalog is CVP1N_SDR for IR1101 with single LTE, Ethernet primary, DIA / NAT, and no application add-on.",
+      links: []
+    };
+
     const selectors = {
       solution: document.getElementById("selection-solution"),
       deployment: document.getElementById("selection-deployment"),
@@ -983,7 +975,6 @@
     const singleModeStep = document.getElementById("single-mode-step");
     const appStep = document.getElementById("app-step");
     const dualModeStep = document.getElementById("dual-mode-step");
-    const sdRoutingStep = document.getElementById("sd-routing-step");
     const sdwanNotes = document.getElementById("sdwan-notes");
     const sdRoutingNotes = document.getElementById("sd-routing-notes");
 
@@ -1008,6 +999,7 @@
     function syncFlow() {
       const solution = getValue("solution");
       const deployment = getValue("deployment");
+      const isSdRouting = solution === "sd_routing";
       const platform = getValue("platform");
       const isIr1001G2 = platform === "ir1001-g2";
       if (isIr1001G2) {
@@ -1021,55 +1013,51 @@
       solutionStep.classList.remove("hidden");
       setSectionEnabled(solutionStep, true);
 
-      if (solution === "sd_routing") {
-        [deploymentStep, roadwaysStep, roadwaysCvStep, platformStep, lteStep, singleLteStep, singleModeStep, appStep, dualModeStep].forEach((section) => {
+      if (isSdRouting) {
+        [deploymentStep, roadwaysStep, roadwaysCvStep].forEach((section) => {
           section.classList.add("hidden");
           setSectionEnabled(section, false);
         });
-        sdRoutingStep.classList.remove("hidden");
-        setSectionEnabled(sdRoutingStep, true);
         sdwanNotes.classList.add("hidden");
         sdRoutingNotes.classList.remove("hidden");
-        return;
+      } else {
+        sdwanNotes.classList.remove("hidden");
+        sdRoutingNotes.classList.add("hidden");
+        deploymentStep.classList.remove("hidden");
+        setSectionEnabled(deploymentStep, true);
+
+        if (deployment === "roadways") {
+          roadwaysStep.classList.remove("hidden");
+          roadwaysCvStep.classList.remove("hidden");
+          setSectionEnabled(roadwaysStep, true);
+          setSectionEnabled(roadwaysCvStep, true);
+          platformStep.classList.add("hidden");
+          setSectionEnabled(platformStep, false);
+          lteStep.classList.add("hidden");
+          singleLteStep.classList.add("hidden");
+          singleModeStep.classList.add("hidden");
+          appStep.classList.add("hidden");
+          dualModeStep.classList.add("hidden");
+          setSectionEnabled(lteStep, false);
+          setSectionEnabled(singleLteStep, false);
+          setSectionEnabled(singleModeStep, false);
+          setSectionEnabled(appStep, false);
+          setSectionEnabled(dualModeStep, false);
+          selectors.platform.textContent = "Not Used";
+          selectors.lte.textContent = "Not Used";
+          selectors.primary.textContent = "Not Used";
+          selectors.mode.textContent = "Not Used";
+          selectors.app.textContent = "Not Used";
+          selectors.dualMode.textContent = "Not Used";
+          return;
+        }
+
+        roadwaysStep.classList.add("hidden");
+        roadwaysCvStep.classList.add("hidden");
+        setSectionEnabled(roadwaysStep, false);
+        setSectionEnabled(roadwaysCvStep, false);
       }
 
-      sdRoutingStep.classList.add("hidden");
-      setSectionEnabled(sdRoutingStep, false);
-      sdwanNotes.classList.remove("hidden");
-      sdRoutingNotes.classList.add("hidden");
-      deploymentStep.classList.remove("hidden");
-      setSectionEnabled(deploymentStep, true);
-
-      if (deployment === "roadways") {
-        roadwaysStep.classList.remove("hidden");
-        roadwaysCvStep.classList.remove("hidden");
-        setSectionEnabled(roadwaysStep, true);
-        setSectionEnabled(roadwaysCvStep, true);
-        platformStep.classList.add("hidden");
-        setSectionEnabled(platformStep, false);
-        lteStep.classList.add("hidden");
-        singleLteStep.classList.add("hidden");
-        singleModeStep.classList.add("hidden");
-        appStep.classList.add("hidden");
-        dualModeStep.classList.add("hidden");
-        setSectionEnabled(lteStep, false);
-        setSectionEnabled(singleLteStep, false);
-        setSectionEnabled(singleModeStep, false);
-        setSectionEnabled(appStep, false);
-        setSectionEnabled(dualModeStep, false);
-        selectors.platform.textContent = "Not Used";
-        selectors.lte.textContent = "Not Used";
-        selectors.primary.textContent = "Not Used";
-        selectors.mode.textContent = "Not Used";
-        selectors.app.textContent = "Not Used";
-        selectors.dualMode.textContent = "Not Used";
-        return;
-      }
-
-      roadwaysStep.classList.add("hidden");
-      roadwaysCvStep.classList.add("hidden");
-      setSectionEnabled(roadwaysStep, false);
-      setSectionEnabled(roadwaysCvStep, false);
       platformStep.classList.remove("hidden");
       setSectionEnabled(platformStep, true);
       setSectionEnabled(lteStep, !isIr1001G2);
@@ -1078,8 +1066,18 @@
       setSectionEnabled(appStep, true);
       setSectionEnabled(dualModeStep, true);
       lteStep.classList.toggle("hidden", isIr1001G2);
-      singleLteStep.querySelector(".step-number").textContent = isIr1001G2 ? "4" : "5";
-      singleModeStep.querySelector(".step-number").textContent = isIr1001G2 ? "5" : "6";
+      platformStep.querySelector(".step-number").textContent = isSdRouting ? "2" : "3";
+      lteStep.querySelector(".step-number").textContent = isSdRouting ? "3" : "4";
+      singleLteStep.querySelector(".step-number").textContent = isSdRouting
+        ? (isIr1001G2 ? "3" : "4")
+        : (isIr1001G2 ? "4" : "5");
+      singleModeStep.querySelector(".step-number").textContent = isSdRouting
+        ? (isIr1001G2 ? "4" : "5")
+        : (isIr1001G2 ? "5" : "6");
+      appStep.querySelector(".step-number").textContent = isSdRouting
+        ? (isIr1001G2 ? "5" : "6")
+        : (isIr1001G2 ? "6" : "7");
+      dualModeStep.querySelector(".step-number").textContent = isSdRouting ? "4" : "5";
 
       if (lte === "dual") {
         singleLteStep.classList.add("hidden");
@@ -1148,30 +1146,32 @@
       const mode = getValue("mode");
       const appProfile = getValue("app_profile");
       const dualMode = getValue("dual_mode");
-      const sdRoutingProfile = getValue("sd_routing_profile");
+      const standardSelectionKey = lte === "dual"
+        ? `${platform}|${lte}|${dualMode}`
+        : (primary === "ethernet" && mode === "dia"
+          ? `${platform}|${lte}|${primary}|${mode}|${appProfile}`
+          : `${platform}|${lte}|${primary}|${mode}`);
       const key = solution === "sd_routing"
-        ? `${solution}|${sdRoutingProfile}`
+        ? `${solution}|${standardSelectionKey}`
         : deployment === "roadways"
         ? `${deployment}|${roadwaysPlatform}|${roadwaysCv}`
-        : (lte === "dual"
-          ? `${platform}|${lte}|${dualMode}`
-          : (primary === "ethernet" && mode === "dia"
-            ? `${platform}|${lte}|${primary}|${mode}|${appProfile}`
-            : `${platform}|${lte}|${primary}|${mode}`));
-      const result = results[key];
+        : standardSelectionKey;
+      const result = results[key] || (solution === "sd_routing" ? sdRoutingNoMatch : null);
       const release = catalogReleases[result.title] || null;
 
       selectors.solution.textContent = labels.solution[solution];
-      if (solution === "sd_routing") {
-        selectors.deployment.textContent = "Horizontal Use";
+      if (solution === "sd_routing" || deployment !== "roadways") {
+        selectors.deployment.textContent = solution === "sd_routing" ? "Not Used" : labels.deployment[deployment];
         selectors.roadwaysPlatform.textContent = "Not Used";
         selectors.roadwaysCv.textContent = "Not Used";
-        selectors.platform.textContent = "IR1101";
-        selectors.lte.textContent = "Single LTE";
-        selectors.primary.textContent = "Ethernet";
-        selectors.mode.textContent = "DIA / NAT";
-        selectors.app.textContent = "None";
-        selectors.dualMode.textContent = "Not Used";
+        selectors.platform.textContent = labels.platform[platform];
+        selectors.lte.textContent = labels.lte[lte];
+        selectors.primary.textContent = lte === "dual" ? "Not Used" : labels.primary[primary];
+        selectors.mode.textContent = lte === "dual" ? "Not Used" : labels.mode[mode];
+        selectors.app.textContent = (lte === "single" && primary === "ethernet" && mode === "dia")
+          ? labels.app[appProfile]
+          : "Not Used";
+        selectors.dualMode.textContent = lte === "dual" ? labels.dualMode[dualMode] : "Not Used";
       } else {
         selectors.deployment.textContent = labels.deployment[deployment];
         selectors.roadwaysPlatform.textContent = deployment === "roadways" ? labels.roadwaysPlatform[roadwaysPlatform] : "Not Used";
