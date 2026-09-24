@@ -652,7 +652,7 @@
           <li>Dual-LTE catalogs are their own branch and do not expose the single-LTE routed/cellular permutations.</li>
         </ul>
         <ul id="sd-routing-notes" class="notes hidden">
-          <li>All hardware and design options remain selectable so new SD-Routing catalogs can be added to this flow.</li>
+          <li>Unavailable SD-Routing choices are grayed out until matching catalogs are published.</li>
           <li>The currently published IR1101 matches are CVP1N_SDR with no application add-on and CVP1N_TE_SDR with ThousandEyes.</li>
         </ul>
       </div>
@@ -1013,22 +1013,47 @@
     }
 
     const appUtdChoice = document.getElementById("app-utd-choice");
-    const sdRoutingApps = new Set(["none", "te"]);
+    const standardOptionNames = ["platform", "lte", "primary", "mode", "app_profile"];
+    const sdRoutingOptions = {
+      platform: new Set(["ir1101"]),
+      lte: new Set(["single"]),
+      primary: new Set(["ethernet"]),
+      mode: new Set(["dia"]),
+      app_profile: new Set(["none", "te"])
+    };
 
-    function syncAppAvailability(isSdRouting) {
-      document.querySelectorAll('input[name="app_profile"]').forEach((input) => {
-        input.disabled = isSdRouting && !sdRoutingApps.has(input.value);
+    function prepareStandardSelections(isSdRouting) {
+      standardOptionNames.forEach((name) => {
+        document.querySelectorAll(`input[name="${name}"]`).forEach((input) => {
+          input.disabled = false;
+        });
       });
 
-      if (isSdRouting && !sdRoutingApps.has(getValue("app_profile"))) {
-        setRadioValue("app_profile", "none");
-      }
+      if (!isSdRouting) return;
+
+      Object.entries(sdRoutingOptions).forEach(([name, allowedValues]) => {
+        if (!allowedValues.has(getValue(name))) {
+          setRadioValue(name, allowedValues.values().next().value);
+        }
+      });
+    }
+
+    function applySdRoutingAvailability(isSdRouting) {
+      if (!isSdRouting) return;
+
+      Object.entries(sdRoutingOptions).forEach(([name, allowedValues]) => {
+        document.querySelectorAll(`input[name="${name}"]`).forEach((input) => {
+          input.disabled = !allowedValues.has(input.value);
+        });
+      });
     }
 
     function syncFlow() {
       const solution = getValue("solution");
-      const deployment = getValue("deployment");
       const isSdRouting = solution === "sd_routing";
+      prepareStandardSelections(isSdRouting);
+
+      const deployment = getValue("deployment");
       const platform = getValue("platform");
       const isIr1001G2 = platform === "ir1001-g2";
       if (isIr1001G2) {
@@ -1124,12 +1149,8 @@
         if (primary === "cellular") {
           setRadioValue("mode", "dia");
           document.getElementById("mode-routed").disabled = true;
-          document.querySelector('label[for="mode-routed"]').style.opacity = "0.45";
-          document.querySelector('label[for="mode-routed"]').style.cursor = "not-allowed";
         } else {
           document.getElementById("mode-routed").disabled = false;
-          document.querySelector('label[for="mode-routed"]').style.opacity = "1";
-          document.querySelector('label[for="mode-routed"]').style.cursor = "pointer";
         }
 
         if (!isIr1001G2 && primary === "ethernet" && mode === "dia") {
@@ -1148,7 +1169,7 @@
         }
       }
 
-      syncAppAvailability(isSdRouting);
+      applySdRoutingAvailability(isSdRouting);
     }
 
     function buildLinks(result) {
