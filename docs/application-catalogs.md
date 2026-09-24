@@ -6,6 +6,7 @@
 | --- | --- | --- | --- |
 | CVP1N_SEA | Secure Equipment Access | [tar.gz](./IR1101/CVP_apps/CVP1N_SEA/CVP1N_SEA-export-2025-10-23T17_09_42.tar.gz) | [PDF](./IR1101/CVP_apps/CVP1N_SEA/CVP1N_SEA_IR1101_Wired_LTE_Backup_NAT.pdf) |
 | CVP1N_TE | ThousandEyes | [tar.gz](./IR1101/CVP_apps/CVP1N_TE/CVP1N_TE-export-2025-10-23T14_02_38.tar.gz) | [PDF](./IR1101/CVP_apps/CVP1N_TE/CVP1N_TE_IR1101_Wired_LTE_Backup_NAT.pdf) |
+| CVP1N_TE_SDR | ThousandEyes (SD-Routing) | [tar.gz](./IR1101/CVP_apps/CVP1N_TE_SDR/CVP1nTE-export-2026-09-24T20_51_37.tar.gz) | Not yet available |
 | CVP1N_TESEA | ThousandEyes and SEA | [tar.gz](./IR1101/CVP_apps/CVP1N_TESEA/CVP1N_TESEA-export-2025-10-23T14_03_04.tar.gz) | [PDF](./IR1101/CVP_apps/CVP1N_TESEA/CVP1N_TESEA_IR1101_Wired_LTE_Backup_NAT.pdf) |
 
 ## IR1800 Application Catalogs

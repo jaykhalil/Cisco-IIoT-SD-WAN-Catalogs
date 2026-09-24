@@ -196,6 +196,15 @@
       transform: translateY(-2px);
     }
 
+    .choice input:disabled + label {
+      border-color: var(--border);
+      background: #f3f6f8;
+      box-shadow: none;
+      cursor: not-allowed;
+      opacity: 0.45;
+      transform: none;
+    }
+
     .step.hidden {
       display: none;
     }
@@ -644,7 +653,7 @@
         </ul>
         <ul id="sd-routing-notes" class="notes hidden">
           <li>All hardware and design options remain selectable so new SD-Routing catalogs can be added to this flow.</li>
-          <li>The currently published match is CVP1N_SDR for IR1101 with single LTE, Ethernet primary, DIA / NAT, and no application add-on.</li>
+          <li>The currently published IR1101 matches are CVP1N_SDR with no application add-on and CVP1N_TE_SDR with ThousandEyes.</li>
         </ul>
       </div>
 
@@ -730,6 +739,7 @@
     const catalogReleases = {
       CVP1N: "20.15.2",
       CVP1N_SDR: "20.18.1a",
+      CVP1N_TE_SDR: "20.18.2",
       CVP1R: "20.15.2",
       CVP2N: "20.15.2",
       CVP2R: "20.15.2",
@@ -763,6 +773,14 @@
         links: [
           { href: "./IR1101/CVP1N_SDR/CVP1N-export-2026-09-23T14_58_02.tar.gz", label: "Download Catalog", secondary: false, download: true },
           { href: "./IR1101/CVP1N_SDR/CVP1N_IR1101_Wired_LTE_Backup_NAT_SDR.pdf", label: "Open PDF", secondary: true }
+        ]
+      },
+      "sd_routing|ir1101|single|ethernet|dia|te": {
+        state: "match",
+        title: "CVP1N_TE_SDR",
+        description: "IR1101 SD-Routing catalog with primary Ethernet, single LTE backup, DIA / NAT, and ThousandEyes agent deployment.",
+        links: [
+          { href: "./IR1101/CVP_apps/CVP1N_TE_SDR/CVP1nTE-export-2026-09-24T20_51_37.tar.gz", label: "Download Catalog", secondary: false, download: true }
         ]
       },
       "roadways|ir1101|base": {
@@ -947,7 +965,7 @@
     const sdRoutingNoMatch = {
       state: "warning",
       title: "No Exact Match Published",
-      description: "There is no published SD-Routing catalog for this selection yet. The currently available SD-Routing catalog is CVP1N_SDR for IR1101 with single LTE, Ethernet primary, DIA / NAT, and no application add-on.",
+      description: "There is no published SD-Routing catalog for this selection yet. Current IR1101 options with single LTE, Ethernet primary, and DIA / NAT are CVP1N_SDR with no application add-on and CVP1N_TE_SDR with ThousandEyes.",
       links: []
     };
 
@@ -995,6 +1013,17 @@
     }
 
     const appUtdChoice = document.getElementById("app-utd-choice");
+    const sdRoutingApps = new Set(["none", "te"]);
+
+    function syncAppAvailability(isSdRouting) {
+      document.querySelectorAll('input[name="app_profile"]').forEach((input) => {
+        input.disabled = isSdRouting && !sdRoutingApps.has(input.value);
+      });
+
+      if (isSdRouting && !sdRoutingApps.has(getValue("app_profile"))) {
+        setRadioValue("app_profile", "none");
+      }
+    }
 
     function syncFlow() {
       const solution = getValue("solution");
@@ -1118,6 +1147,8 @@
           setRadioValue("app_profile", "none");
         }
       }
+
+      syncAppAvailability(isSdRouting);
     }
 
     function buildLinks(result) {
