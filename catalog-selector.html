@@ -213,6 +213,12 @@
       display: grid;
       gap: 18px;
       align-content: start;
+      align-self: start;
+      position: sticky;
+      top: 20px;
+      max-height: calc(100vh - 40px);
+      overflow-y: auto;
+      scrollbar-width: thin;
     }
 
     .summary-box {
@@ -365,6 +371,12 @@
     @media (max-width: 900px) {
       .layout {
         grid-template-columns: 1fr;
+      }
+
+      .summary {
+        position: static;
+        max-height: none;
+        overflow-y: visible;
       }
     }
   </style>
