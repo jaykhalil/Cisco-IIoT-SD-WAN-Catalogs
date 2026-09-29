@@ -10,5 +10,6 @@ Use these pages to browse the catalog families from one local site.
 
 - [IR1101 Catalogs](./ir1101.md)
 - [IR1800 Catalogs](./ir1800.md)
+- [IR1001-G2 Catalogs](./ir1001.md)
 - [Roadways Catalogs](./roadways.md)
 - [Application Catalogs](./application-catalogs.md)
