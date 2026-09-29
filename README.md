@@ -1,8 +1,8 @@
-# Cisco-IIoT-SD-WAN-Catalogs
+# Cisco-IIoT-Routing-Catalogs
 
 <!DOCTYPE html>
 <html>
-<p> Cisco SD-WAN Catalogs are essentially edge device configuration groups that can be imported directly into Catalyst SD-WAN. Further, Cisco Industrial IoT devices can be added to the group and the configuration deployed with few clicks, reducing the need to build such configuration groups from scratch. </p>
+<p> Cisco SD-WAN/SD-Routing Catalogs are essentially edge device configuration groups that can be imported directly into Catalyst SD-WAN. Further, Cisco Industrial IoT devices can be added to the group and the configuration deployed with few clicks, reducing the need to build such configuration groups from scratch. </p>
   
 <p> All catalogs are Cisco Validated Profiles (CVP) with CVP in the name along with some other designation. In all profiles (N) in the name refers to a deployment in NAT mode (aka Direct Internet Access or DIA) where LAN traffic is sent directly to the internet and no HUB is present, while (R) in the name refers to a routed deployment where all LAN traffic will be routed to a central hub advertising a default route. When using any catalog with NAT (DIA), a configuration topology should be deployed to deny all route exchanges with vSmart controllers to avoid edge2edge tunnels. To do this, tag all WAN edges with a common tag and then apply the tag to a rule for inbound/outbound sites in the creation of a custom topology in "Configurations --> Topology" and activate it, thereby stopping all tunnel formations. <a href="./metadata/deny-all-topology-for-dia.png">Sample deny-all Configuration Topology</a> </p>
 
@@ -18,7 +18,7 @@
   </tr>
 </table>
 
-<p> Once a catalog is imported as a Configuration Group, that group can then be modified further, prior to attaching and deploying on edge devices. Catalogs come with certain global values pre-configured to ease deployment, such as interface names, cellular timer optimizations to reduce cellular data usage, pre-defined service VPNs and other services such as NTP, DNS, DHCP, and Logging. Catalog guides are included when available and explain the functionality in more detail. Below is an example of where to import the catalog tar file in Cisco SD-WAN. </p>
+<p> Once a catalog is imported as a Configuration Group, that group can then be modified further, prior to attaching and deploying on edge devices. Catalogs come with certain global values pre-configured to ease deployment, such as interface names, cellular timer optimizations to reduce cellular data usage, pre-defined service VPNs and other services such as NTP, DNS, DHCP, and Logging. Catalog guides are included when available and explain the functionality in more detail. Below is an example of where to import the catalog tar file in Cisco SD-WAN Manager. </p>
 <img width="1480" height="644" alt="image" src="./metadata/cg-import.png" />
 
 <p>For a complete list of all available catalogs: <a href="./CATALOGS.md">SD-WAN and SD-Routing Industrial Router Catalogs</a></p>
