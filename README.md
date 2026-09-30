@@ -15,6 +15,10 @@
       <p>Use the interactive selector to choose Catalyst SD-WAN or Catalyst SD-Routing and map your deployment to the closest published Cisco IIoT catalog.</p>
       <h2><a href="https://jaykhalil.github.io/Cisco-IIoT-SD-WAN-Catalogs/catalog-selector.html">Open the Catalog Selector</a></h2>
     </td>
+    <td align="center" width="200">
+      <a href="https://jaykhalil.github.io/Cisco-IIoT-SD-WAN-Catalogs/media/catalog-selector-get-started.mp4"><img src="./docs/media/catalog-selector-thumbnail.jpg" width="180" alt="Watch video: Get started with routing catalogs"></a><br>
+      <small><a href="https://jaykhalil.github.io/Cisco-IIoT-SD-WAN-Catalogs/media/catalog-selector-get-started.mp4">▶ Watch video: Get started with routing catalogs</a></small>
+    </td>
   </tr>
 </table>
 
